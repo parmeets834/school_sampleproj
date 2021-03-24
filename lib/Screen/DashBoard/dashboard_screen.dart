@@ -37,6 +37,7 @@ class _PreLoginState extends State<DashBoard> {
     _medium = ResponsiveWidget.isScreenMedium(_width, _pixelRatio);
     double screenWidth = MediaQuery.of(context).size.width;
 final provider=Provider.of<PreLoginProvider>(context);
+provider.context=context;
     return Scaffold(
       appBar: AppBar(leading: Icon(Icons.list),
         title: Text("Login to Cloud Campus"),
@@ -98,7 +99,11 @@ final provider=Provider.of<PreLoginProvider>(context);
               gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                   crossAxisCount: 3, childAspectRatio: 1),
               itemBuilder: (BuildContext context, int index) {
-                return DashBoardCard(image: provider.items[index].image,title: provider.items[index].title,);
+                return InkWell(
+                    onTap: (){
+                      provider.loadRoute(index);
+                    },
+                    child: DashBoardCard(image: provider.items[index].image,title: provider.items[index].title,));
               },
             ))
       ]),

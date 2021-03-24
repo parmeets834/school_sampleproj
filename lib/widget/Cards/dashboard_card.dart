@@ -22,7 +22,7 @@ class DashBoardCard extends StatelessWidget {
                 child: SvgPicture.asset(image)),
             Padding(
                 padding: EdgeInsets.all(5),
-                child: Text(title,  style: GoogleFonts.openSans(fontSize: 17),textAlign: TextAlign.center,))
+                child: Text(title,  style: GoogleFonts.openSans(fontSize: 15),textAlign: TextAlign.center,),)
             ],
           )),
     );

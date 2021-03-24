@@ -3,10 +3,12 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:school_sampleproj/Screen/DashBoard/dashboard_screen.dart';
+import 'package:school_sampleproj/providers/TaskProvider.dart';
 import 'package:school_sampleproj/providers/otp_provider.dart';
 
 import 'Screen/OtpScreen/otp_screen.dart';
 import 'Screen/SignIn/signup_screen.dart';
+import 'Screen/Task/Task.dart';
 import 'providers/pre_login_provider.dart';
 import 'providers/sign_up_provider.dart';
 import 'Screen/Spash/splash.dart';
@@ -15,7 +17,8 @@ void main() {
   runApp(MultiProvider(
     providers: [ChangeNotifierProvider(create: (ctx) => SignUpProvider()),
     ChangeNotifierProvider(create: (ctx)=>OtpProvider()),
-      ChangeNotifierProvider(create: (ctx)=>PreLoginProvider())
+      ChangeNotifierProvider(create: (ctx)=>PreLoginProvider()),
+      ChangeNotifierProvider(create: (ctx)=>TaskProvider()),
     ],
     child: MyApp(),
   ));
@@ -35,7 +38,8 @@ class MyApp extends StatelessWidget {
         '/': (context) => SplashScreen(),
         SignUpScreen.classname:(context)=>SignUpScreen(),
         OtpScreen.classname:(context)=>OtpScreen(),
-        DashBoard.classname:(context)=>DashBoard()
+        DashBoard.classname:(context)=>DashBoard(),
+        Task.classname:(context)=>Task(),
       },
     );
   }
