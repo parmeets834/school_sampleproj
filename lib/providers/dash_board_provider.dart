@@ -1,10 +1,13 @@
 
 
 import 'package:flutter/cupertino.dart';
+import 'package:school_sampleproj/Screen/Mentor/mentor.dart';
+import 'package:school_sampleproj/Screen/Notification/notification_screen.dart';
 import 'package:school_sampleproj/Screen/Task/Task.dart';
+import 'package:school_sampleproj/model/Carrage.dart';
 import 'package:school_sampleproj/model/dashboard_items.dart';
 
-class PreLoginProvider extends ChangeNotifier{
+class DashBoardProvider extends ChangeNotifier{
 
 List<DasBoardItem> items=[
   DasBoardItem(image: 'assets/notification.svg',title: 'Notification'),
@@ -17,12 +20,14 @@ List<DasBoardItem> items=[
   DasBoardItem(image: 'assets/graph.svg',title: 'My performance'),
   DasBoardItem(image: 'assets/canvas.svg',title: 'Notice Board'),
   DasBoardItem(image: 'assets/report1.svg',title: 'Fees Details'),
-  DasBoardItem(image: 'assets/googlemeet.svg',title: 'Video \n  Conf - 1'),
-  DasBoardItem(image: 'assets/zoom.svg',title: 'Video \n  Conf - 2'),
+  DasBoardItem(image: 'assets/googlemeet.svg',title: 'Google \n Meet'),
+  DasBoardItem(image: 'assets/zoom.svg',title: 'Zoom \n '),
   DasBoardItem(image: 'assets/microsoft.svg',title: 'MicroSoft Teams'),
 ];
 
   BuildContext context;
+
+  Carrage carrage;
 
   getDashBoardItem() {
     return items;
@@ -30,7 +35,12 @@ List<DasBoardItem> items=[
 
   loadRoute(int index) {
     switch(index){
+      case 0: Navigator.pushNamed(context, NotificationScreen.classname,arguments: carrage);
+      break;
+
       case 1: Navigator.pushNamed(context, Task.classname);
+      break;
+      case 5: Navigator.pushNamed(context, Mentor.classname);
       break;
     }
 

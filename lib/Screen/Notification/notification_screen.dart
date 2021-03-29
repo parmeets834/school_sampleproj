@@ -4,6 +4,9 @@ import 'package:pull_to_refresh/pull_to_refresh.dart';
 import 'package:school_sampleproj/Screen/PostScreen/PostScren.dart';
 import 'package:school_sampleproj/global/constant_function.dart';
 import 'package:school_sampleproj/global/constants.dart';
+import 'package:school_sampleproj/model/Carrage.dart';
+import 'package:school_sampleproj/model/post_model.dart';
+import 'package:school_sampleproj/providers/notification/notification_provider.dart';
 import 'file:///D:/Practice%20folder/school_sampleproj/lib/providers/task/TaskProvider.dart';
 import 'package:school_sampleproj/widget/Cards/task_item.dart';
 import 'package:school_sampleproj/widget/Cards/task_item_shimmer.dart';
@@ -11,22 +14,26 @@ import 'package:school_sampleproj/widget/ShimmerContainer.dart';
 import 'package:school_sampleproj/widget/app_bar/app_bar.dart';
 import 'package:shimmer/shimmer.dart';
 
-class Task extends StatefulWidget {
-  static const classname = "/Task";
+class NotificationScreen extends StatefulWidget {
+  static const classname = "/NotificationScreen";
 
   @override
-  _TaskState createState() => _TaskState();
+  _NotificationScreenState createState() => _NotificationScreenState();
 }
 
-class _TaskState extends State<Task> {
+class _NotificationScreenState extends State<NotificationScreen> {
+
+
   @override
   Widget build(BuildContext context) {
-    final provider = Provider.of<TaskProvider>(context);
+    final provider = Provider.of<NotificationProvider>(context);
+    provider.carrage=ModalRoute.of(context).settings.arguments;
+    provider.loadData();
     return Scaffold(
       appBar: PreferredSize(
           preferredSize: AppBarCommon.getSize(context),
-          child: AppBarCommon(title: "My Task")),
-      body: Consumer<TaskProvider>(builder: (context, value, child) {
+          child: AppBarCommon(title: "Notifications")),
+      body: Consumer<NotificationProvider>(builder: (context, value, child) {
         // ignore: missing_return
         if (provider.state == appstate.loading) {
           return Container(
@@ -45,21 +52,29 @@ class _TaskState extends State<Task> {
               onLoading: provider.onloading,
               enablePullDown: true,
               child: ListView.builder(
-                itemBuilder: (_, __) => InkWell(
-
+                itemBuilder: (_, index) => InkWell(
                   child: InkWell(
-                    onTap:()=> Navigator.pushNamed(context, PostScreen.classname),
-                    child: TaskItem(description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.",date:"Date: ${getDateStringFromDate(DateTime.now())}",
-                      subject: "English Hons"),
+                    onTap:()=> Navigator.pushNamed(context, PostScreen.classname,
+                        arguments: Carrage(
+                            postModel: PostModel(title:value.notifications[index].hWDateStr2,content:value.notifications[index].hWRemarks,
+                            image: value.notifications[index].photoLocation,date: value.notifications[index].hWDateStr
+                            ))),
+                    child: TaskItem(description: "${value.notifications[index].hWRemarks}",date:"Date: ${"${value.notifications[index].hWDateStr}"}",
+                      subject: "${"${value.notifications[index].hWDateStr2}"}"),
                   ),
                 ),
 
-                itemCount: 10,
+                itemCount: value.notifications.length,
               ),
             ),
           );
         }
       }),
     );
+  }
+
+  @override
+  void initState() {
+
   }
 }

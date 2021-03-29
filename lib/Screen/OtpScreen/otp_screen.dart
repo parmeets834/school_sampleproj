@@ -1,9 +1,12 @@
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
 import 'package:provider/provider.dart';
+import 'package:school_sampleproj/Api/Api.dart';
 import 'package:school_sampleproj/global/constants.dart';
 import 'package:school_sampleproj/providers/otp_provider.dart';
+import 'package:school_sampleproj/utils/database.dart';
 import 'package:school_sampleproj/widget/other/allWidget.dart';
 import 'package:school_sampleproj/widget/other/custom_shape.dart';
 import 'package:school_sampleproj/widget/other/customappbar.dart';
@@ -29,15 +32,18 @@ class _OtpScreenState extends State<OtpScreen> {
 
   @override
   void initState() {
-    final provider = Provider.of<OtpProvider>(context, listen: false);
-    provider.skey = new GlobalKey<ScaffoldState>();
+  /*  final provider = Provider.of<OtpProvider>(context, listen: false);
+    provider.sentOtp();*/
+
   }
 
   @override
   Widget build(BuildContext context) {
+
+
     final provider = Provider.of<OtpProvider>(context);
     provider.context = context;
-
+    provider.skey = new GlobalKey<ScaffoldState>();
     _height = MediaQuery.of(context).size.height;
     _width = MediaQuery.of(context).size.width;
     _pixelRatio = MediaQuery.of(context).devicePixelRatio;
@@ -290,4 +296,6 @@ class _OtpScreenState extends State<OtpScreen> {
       ),
     );
   }
+
+
 }

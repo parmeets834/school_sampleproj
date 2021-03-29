@@ -1,21 +1,24 @@
 
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:school_sampleproj/global/constants.dart';
 import 'package:school_sampleproj/model/Student.dart';
-import 'package:school_sampleproj/providers/pre_login_provider.dart';
+import 'package:school_sampleproj/providers/dash_board_provider.dart';
+
 import 'package:school_sampleproj/widget/Cards/dashboard_card.dart';
 import 'package:school_sampleproj/widget/other/responsive_ui.dart';
-
+import '../../global/constant_function.dart';
 
 class DashBoard extends StatefulWidget {
   static const classname="/DashBoard";
   @override
-  _PreLoginState createState() => _PreLoginState();
+  _DashBoardState createState() => _DashBoardState();
 }
 
 
 
-class _PreLoginState extends State<DashBoard> {
+class _DashBoardState extends State<DashBoard> with RouteAware {
+
 
 
   double _height;
@@ -28,6 +31,14 @@ class _PreLoginState extends State<DashBoard> {
 
   bool _medium;
 
+
+  @override
+  void initState() {
+    final provider=Provider.of<DashBoardProvider>(context,listen: false);
+
+
+  }
+
   @override
   Widget build(BuildContext context) {
     _height = MediaQuery.of(context).size.height;
@@ -36,8 +47,12 @@ class _PreLoginState extends State<DashBoard> {
     _large = ResponsiveWidget.isScreenLarge(_width, _pixelRatio);
     _medium = ResponsiveWidget.isScreenMedium(_width, _pixelRatio);
     double screenWidth = MediaQuery.of(context).size.width;
-final provider=Provider.of<PreLoginProvider>(context);
-provider.context=context;
+     final provider=Provider.of<DashBoardProvider>(context);
+     provider.context=context;
+    provider.carrage=ModalRoute.of(context).settings.arguments;
+    currunt_user=provider.carrage.userData;
+    setConfigurationAsPerUser(currunt_user);
+    seturls();
     return Scaffold(
       appBar: AppBar(leading: Icon(Icons.list),
         title: Text("Login to Cloud Campus"),
@@ -74,8 +89,8 @@ provider.context=context;
                           children: [
 
                             Text("St Marry Public School",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 14),),
-                            Text("Student: Kshitij Singh",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 14),),
-                            Text("Class : 12th",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 14),),
+                            Text("Student:${provider.carrage.userData.activeUserName}",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 14),),
+                            Text("Class : ${provider.carrage.userData.activeUserClass}",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 14),),
                             Text("DashBoard: Parent",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 14),),
 
                           ],),
@@ -110,4 +125,29 @@ provider.context=context;
     );
   }
 
+
+  @override
+  void didPush() {
+    print("did push happen");
+  }
+
+  @override
+  void didPushNext() {
+    print("did push Next happen");
+  }
+
+  @override
+  void didPopNext() {
+    print("did pop happen");
+  }
+
+  @override
+  void didChangeDependencies() {
+    print("didChangeDependencies");
+  }
+
+  @override
+  void didPop() {
+    print("didPop");
+  }
 }

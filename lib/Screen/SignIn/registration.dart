@@ -29,6 +29,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
   void initState() {
     final provider = Provider.of<SignUpProvider>(context, listen: false);
     provider.skey = new GlobalKey<ScaffoldState>();
+    provider.schooldController.text=activeClientCode;
   }
 
   @override
@@ -150,26 +151,27 @@ class _SignUpScreenState extends State<SignUpScreen> {
   }
 
   Widget form() {
+
     return Container(
       margin: EdgeInsets.only(
           left: _width / 12.0, right: _width / 12.0, top: _height / 20.0),
       child: Form(
         child: Column(
           children: <Widget>[
-            firstNameTextFormField(),
+            userIdTextFormField(),
             SizedBox(height: _height / 60.0),
             schoolIdController(),
             SizedBox(height: _height / 60.0),
        //     emailTextFormField(),
             SizedBox(height: _height / 60.0),
-            _getDropDown()
+            _getDropDownUserType()
           ],
         ),
       ),
     );
   }
 
-  Widget firstNameTextFormField() {
+  Widget userIdTextFormField() {
     return CustomTextField(
       textEditingController: Provider.of<SignUpProvider>(context, listen: false)
           .userIdcontroller,
@@ -181,6 +183,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
 
   Widget schoolIdController() {
     return CustomTextField(
+
       textEditingController: Provider.of<SignUpProvider>(context, listen: false)
           .schooldController,
       keyboardType: TextInputType.text,
@@ -189,7 +192,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
     );
   }
 
-  Widget emailTextFormField() {
+/*
+  Widget userSelectTextFormField() {
     return CustomTextField(
       textEditingController:
           Provider.of<SignUpProvider>(context, listen: false).emailcontroller,
@@ -198,13 +202,13 @@ class _SignUpScreenState extends State<SignUpScreen> {
       hint: "User Type",
     );
   }
+*/
 
 
-  _getDropDown() {
-  List<String> ls=  ["Student","Teacher","Admin"];
+  _getDropDownUserType() {
     final provider=Provider.of<SignUpProvider>(context,listen: false);
     return CustomAnyWidget(
-      textEditingController: Provider.of<SignUpProvider>(context).phonecontroller,
+      textEditingController: Provider.of<SignUpProvider>(context).activeTypeUser,
       keyboardType: TextInputType.number,
       icon: Icons.phone,
       hint: "Student Type...",
@@ -271,7 +275,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
       elevation: 0,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30.0)),
       onPressed: () {
-        Provider.of<SignUpProvider>(context, listen: false).createUser();
+        Provider.of<SignUpProvider>(context, listen: false).performRegister();
       },
       textColor: Colors.white,
       padding: EdgeInsets.all(0.0),
