@@ -7,7 +7,6 @@ import 'package:school_sampleproj/global/constants.dart';
 import 'package:school_sampleproj/model/Carrage.dart';
 import 'package:school_sampleproj/model/post_model.dart';
 import 'package:school_sampleproj/providers/notification/notification_provider.dart';
-import 'file:///D:/Practice%20folder/school_sampleproj/lib/providers/task/TaskProvider.dart';
 import 'package:school_sampleproj/widget/Cards/task_item.dart';
 import 'package:school_sampleproj/widget/Cards/task_item_shimmer.dart';
 import 'package:school_sampleproj/widget/ShimmerContainer.dart';

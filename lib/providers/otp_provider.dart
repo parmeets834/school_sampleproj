@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:convert';
 
 import 'package:dio/dio.dart';
@@ -31,9 +32,19 @@ class OtpProvider extends ChangeNotifier {
    List<dynamic> ls= jsonDecode(str);
       if(OtpVerificationModel.fromJson(ls[0]).infoField1=="0" || OtpVerificationModel.fromJson(ls[0]).infoField1=="1"){
         toast(skey, "User Authenticate Successfully");
-        DatabaseUtil().insertData(otp_user);
+
+        try {
+          DatabaseUtil().insertData(otp_user);
+        } catch(e){
+          toast(skey, "User Already Register");
+        }
+
         Provider.of<PreLoginProvider>(context,listen: false).state=appstate.reload;
-        Navigator.pushNamedAndRemoveUntil(context, PreLogin.classname, (route) => false);
+        Timer(Duration(seconds: 1), () {
+          Navigator.pushNamedAndRemoveUntil(context, PreLogin.classname, (route) => false);
+        });
+
+
       }else{
         toast(skey, "Otp Authentication Failed");
       }

@@ -4,7 +4,10 @@ import 'package:pull_to_refresh/pull_to_refresh.dart';
 import 'package:school_sampleproj/Screen/PostScreen/PostScren.dart';
 import 'package:school_sampleproj/global/constant_function.dart';
 import 'package:school_sampleproj/global/constants.dart';
-import 'file:///D:/Practice%20folder/school_sampleproj/lib/providers/task/TaskProvider.dart';
+import 'package:school_sampleproj/model/Carrage.dart';
+import 'package:school_sampleproj/model/post_model.dart';
+import 'package:school_sampleproj/providers/task/task_provider.dart';
+
 import 'package:school_sampleproj/widget/Cards/task_item.dart';
 import 'package:school_sampleproj/widget/Cards/task_item_shimmer.dart';
 import 'package:school_sampleproj/widget/ShimmerContainer.dart';
@@ -19,15 +22,19 @@ class Task extends StatefulWidget {
 }
 
 class _TaskState extends State<Task> {
+
+
+
   @override
   Widget build(BuildContext context) {
-    final provider = Provider.of<TaskProvider>(context);
+
+    final provider = Provider.of<TaskDataProvider>(context);
     return Scaffold(
       appBar: PreferredSize(
           preferredSize: AppBarCommon.getSize(context),
           child: AppBarCommon(title: "My Task")),
-      body: Consumer<TaskProvider>(builder: (context, value, child) {
-        // ignore: missing_return
+      body: Consumer<TaskDataProvider>(
+          builder: (context, value, child) {
         if (provider.state == appstate.loading) {
           return Container(
             padding: EdgeInsets.all(10),
@@ -45,21 +52,28 @@ class _TaskState extends State<Task> {
               onLoading: provider.onloading,
               enablePullDown: true,
               child: ListView.builder(
-                itemBuilder: (_, __) => InkWell(
-
+                itemBuilder: (_, index) => InkWell(
                   child: InkWell(
-                    onTap:()=> Navigator.pushNamed(context, PostScreen.classname),
-                    child: TaskItem(description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.",date:"Date: ${getDateStringFromDate(DateTime.now())}",
-                      subject: "English Hons"),
+                    onTap:()=> Navigator.pushNamed(context, PostScreen.classname,
+                        arguments: Carrage(postModel: PostModel(date:value.taskList[index].hwDateStr,
+                            content: value.taskList[index].hwRemarks,title: value.taskList[index].hwRemarks))),
+                    child: TaskItem(description: "${value.taskList[index].hwRemarks} ",date:"Date:${value.taskList[index].hwDateStr}",
+                      subject: "${value.taskList[index].hwSubject}"),
                   ),
                 ),
 
-                itemCount: 10,
+                itemCount: value.taskList.length,
               ),
             ),
           );
         }
       }),
     );
+  }
+
+  @override
+  void initState() {
+  final provider=  Provider.of<TaskDataProvider>(context,listen: false);
+  provider.loadData();
   }
 }

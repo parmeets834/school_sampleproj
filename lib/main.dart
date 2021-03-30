@@ -5,6 +5,7 @@ import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 import 'package:school_sampleproj/Screen/DashBoard/dashboard_screen.dart';
 import 'package:school_sampleproj/Screen/Notification/notification_screen.dart';
+import 'package:school_sampleproj/Screen/PreLogin/pre_login.dart';
 import 'package:school_sampleproj/model.dart';
 import 'package:school_sampleproj/providers/dash_board_provider.dart';
 import 'package:school_sampleproj/providers/mentor/mentor_provider.dart';
@@ -15,8 +16,9 @@ import 'package:school_sampleproj/utils/database.dart';
 import 'Screen/Mentor/mentor.dart';
 import 'Screen/Mentor/mentor_list.dart';
 import 'Screen/Mentor/mentor_request.dart';
+import 'Screen/PostScreen/ImageDisplay.dart';
 import 'Screen/SignIn/registration.dart';
-import 'file:///D:/Practice%20folder/school_sampleproj/lib/providers/task/TaskProvider.dart';
+
 import 'package:school_sampleproj/providers/otp_provider.dart';
 
 import 'Screen/OtpScreen/otp_screen.dart';
@@ -27,6 +29,7 @@ import 'Screen/Task/Task.dart';
 import 'providers/mentor/mentor_request.dart';
 import 'providers/sign_up_provider.dart';
 import 'Screen/Spash/splash.dart';
+import 'providers/task/task_provider.dart';
 
 void main() async{
   WidgetsFlutterBinding.ensureInitialized();
@@ -41,8 +44,8 @@ void main() async{
       providers: [
         ChangeNotifierProvider(create: (ctx) => SignUpProvider()),
         ChangeNotifierProvider(create: (ctx) => OtpProvider()),
-        ChangeNotifierProvider(create: (ctx) => DashBoardProvider()),
-        ChangeNotifierProvider(create: (ctx) => TaskProvider()),
+        ChangeNotifierProvider(create: (ctx) => DashBoardProvider(),),
+        ChangeNotifierProvider(create: (ctx) => TaskDataProvider()),
         ChangeNotifierProvider(create: (ctx) => MentorProvider()),
         ChangeNotifierProvider(create: (ctx) => MentorRequestProvider()),
         ChangeNotifierProvider(create: (ctx) => SplashProvider()),
@@ -76,7 +79,9 @@ class MyApp extends StatelessWidget {
         Mentor.classname:(context)=> Mentor(),
         MentorRequest.classname:(context)=>MentorRequest(),
         MentorList.classname:(context)=>MentorList(),
-        NotificationScreen.classname:(context)=>NotificationScreen()
+        NotificationScreen.classname:(context)=>NotificationScreen(),
+        ImageDisplay.classname:(context)=>ImageDisplay(),
+        PreLogin.classname:(context)=>PreLogin()
       },
     );
   }

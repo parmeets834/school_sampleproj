@@ -3,8 +3,12 @@
  */
 
 import 'package:flutter/material.dart';
+import 'package:photo_view/photo_view.dart';
+import 'package:school_sampleproj/model/Carrage.dart';
 
 class ImageDisplay extends StatefulWidget {
+  static const classname="/ImageDisplay";
+
   @override
   _ImageDisplayState createState() => _ImageDisplayState();
 }
@@ -12,7 +16,11 @@ class ImageDisplay extends StatefulWidget {
 class _ImageDisplayState extends State<ImageDisplay> {
   @override
   Widget build(BuildContext context) {
-    return Container();
+    Carrage carrage=ModalRoute.of(context).settings.arguments;
+    return Container(
+        child: PhotoView(
+      imageProvider: NetworkImage(carrage.postModel.image),
+    ));
+    ;
   }
 }
-

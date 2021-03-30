@@ -38,11 +38,6 @@ class _PreLoginState extends State<PreLogin> {
   }
 
 
-  @override
-  void dispose() {
-    final provider = Provider.of<PreLoginProvider>(context, listen: false);
-    provider.loadLoginUsers();
-  }
 
   @override
   Widget build(BuildContext context) {

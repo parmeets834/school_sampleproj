@@ -8,7 +8,7 @@ import 'package:school_sampleproj/global/constant_function.dart';
 import 'package:school_sampleproj/global/constants.dart';
 import 'package:school_sampleproj/model.dart';
 import 'package:school_sampleproj/model/Carrage.dart';
-import 'package:school_sampleproj/model/check_dio_error.dart';
+import 'file:///D:/Practice%20folder/school_sampleproj/lib/utils/check_dio_error.dart';
 import 'package:school_sampleproj/utils/app_logger.dart';
 import 'package:school_sampleproj/utils/database.dart';
 import 'package:school_sampleproj/utils/validation.dart';

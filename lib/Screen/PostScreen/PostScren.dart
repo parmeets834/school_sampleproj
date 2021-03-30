@@ -6,6 +6,8 @@ import 'package:school_sampleproj/global/constants.dart';
 import 'package:school_sampleproj/model/Carrage.dart';
 import 'package:school_sampleproj/model/post_model.dart';
 
+import 'ImageDisplay.dart';
+
 class PostScreen extends StatefulWidget {
   static const classname = "/PostScreen";
 
@@ -36,22 +38,33 @@ class _PostScreenState extends State<PostScreen> {
               children: [
                 ((){
                   if(postData.image!=null )
-                    return Container(
-                      width: MediaQuery.of(context).size.width,
-                      child: Center(
-                        child: ClipRRect(
-                          borderRadius: BorderRadius.only(
-                              bottomLeft: Radius.circular(20),
-                              bottomRight: Radius.circular(20)),
-                          child: Image.network(
-                            postData.image, // todo update as per login user
-                            fit: BoxFit.fill,
+                    return InkWell(
+                      onTap: (){
+                        Navigator.pushNamed(context,ImageDisplay.classname,arguments: carrage);
+                      },
+                      child: ConstrainedBox(
+                        constraints: new BoxConstraints(
+                          maxHeight: 250,
+
+                        ),
+                        child: Container(
+                          width: MediaQuery.of(context).size.width,
+                          child: Center(
+                            child: ClipRRect(
+                              borderRadius: BorderRadius.only(
+                                  bottomLeft: Radius.circular(20),
+                                  bottomRight: Radius.circular(20)),
+                              child: Image.network(
+                                postData.image, // todo update as per login user
+                                fit: BoxFit.fill,
+                              ),
+                            ),
                           ),
                         ),
                       ),
                     );
                   else
-                    Container();
+                    return Container();
 
                 }() ),
                 Padding(

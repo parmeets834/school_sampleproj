@@ -11,6 +11,7 @@ class PreLoginProvider extends ChangeNotifier{
 
   List<UserData> loggedUserList;
   dynamic state=appstate.defaultstate;
+
   loadLoginUsers() async{
     loggedUserList=[];
    List<dynamic> ls= await DatabaseUtil().getLoggedUser();
@@ -29,7 +30,7 @@ notifyListeners();
     if(state!=appstate.reload){
       return;
     }
-    appstate.defaultstate;
+    state=appstate.defaultstate;
     loadLoginUsers();
 
   }
