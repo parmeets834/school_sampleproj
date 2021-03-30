@@ -43,7 +43,7 @@ class NotificationProvider extends ChangeNotifier {
     }
     notifications=[];
     state=appstate.loading;// prevent recalls
-    Response resp = await Api().getNotifications(carrage.userData);
+    Response resp = await Api().getNotifications(currunt_user);
     print("Here1");
     String Respstring = resp.data.toString();
     print(Respstring);
@@ -57,7 +57,7 @@ class NotificationProvider extends ChangeNotifier {
     for(var u in jsonData){
       x=x+1;
 
-     NotificationModel model = NotificationModel(u["HWID"].toString() , u["HWDateStr"].toString(), u["HWSubject"].toString(), u["HWRemarks"].toString(), u["PhotoLocation"].toString());
+     NotificationModel model = NotificationModel(u["HWID"].toString() , u["HWDateStr"].toString(), u["HWSubject"].toString(), u["HWRemarks"].toString(),webResourceURL+"/Notification/"+ u["PhotoLocation"].toString());
       notifications.add(model);
     }
 

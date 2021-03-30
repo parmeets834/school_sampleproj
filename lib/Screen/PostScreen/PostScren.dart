@@ -34,20 +34,26 @@ class _PostScreenState extends State<PostScreen> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Container(
-                  width: MediaQuery.of(context).size.width,
-                  child: Center(
-                    child: ClipRRect(
-                      borderRadius: BorderRadius.only(
-                          bottomLeft: Radius.circular(20),
-                          bottomRight: Radius.circular(20)),
-                      child: Image.network(
-                        demo_image_url, // todo update as per login user
-                        fit: BoxFit.fill,
+                ((){
+                  if(postData.image!=null )
+                    return Container(
+                      width: MediaQuery.of(context).size.width,
+                      child: Center(
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.only(
+                              bottomLeft: Radius.circular(20),
+                              bottomRight: Radius.circular(20)),
+                          child: Image.network(
+                            postData.image, // todo update as per login user
+                            fit: BoxFit.fill,
+                          ),
+                        ),
                       ),
-                    ),
-                  ),
-                ),
+                    );
+                  else
+                    Container();
+
+                }() ),
                 Padding(
                   padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
                   child: Text("${postData.title}",

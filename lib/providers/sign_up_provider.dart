@@ -27,14 +27,14 @@ class SignUpProvider extends ChangeNotifier {
   List<String> user_type = ['Parent', 'Teacher', 'Admin'];
 
   performRegister() async {
-    activeClientCode=schooldController.text;
+    activeClientCode=schooldController.text; // this is due to request taken
     seturls();
 
     // Response resp=    await Api().registerUser(userIdcontroller.text,schooldController.text );
 
     Response resp;
     try {
-      resp = await Api().loginUser(userIdcontroller.text);
+      resp = await Api().checkUserRegister(userIdcontroller.text);
     } on DioError catch (e) {
       CheckDioError obj = CheckDioError.check(e);
       if (obj != null) {

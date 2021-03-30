@@ -34,23 +34,6 @@ class Api {
         data: await map);
   }
 
-  Future loginUser(String Uid) async {
-
-    String activityDescStr =getUserActivityString(Uid,Uid,"Students Info. Request for Profile Verification ",  "Student Apk.");
-
-    var map = {
-      "title": 'RegisterStudent',
-      "description": activityDescStr,
-      "ReqAcastart": activeAcastart,
-      "ReqUserID":  Uid,
-      "ReqPhoneCode":"13525"
-    };
-
-    return dio.post("/",
-        options: Options(contentType: "application/x-www-form-urlencoded"),
-        data: await map);
-  }
-
 
 
   Future<Response>  getNotifications(UserData data)
@@ -79,6 +62,24 @@ class Api {
     print("Dio Error Response Data is ${error.response.data}");
   }
 
+// step 1
+  Future checkUserRegister(String Uid) async {
+
+    String activityDescStr =getUserActivityString(Uid,Uid,"Students Info. Request for Profile Verification ",  "Student Apk.");
+
+    var map = {
+      "title": 'RegisterStudent',
+      "description": activityDescStr,
+      "ReqAcastart": activeAcastart,
+      "ReqUserID":  Uid,
+      "ReqPhoneCode":"13525"
+    };
+
+    return dio.post("/",
+        options: Options(contentType: "application/x-www-form-urlencoded"),
+        data: await map);
+  }
+
   // step 2
   Future<Response> sentOtp(UserData data)
   async{
@@ -96,9 +97,10 @@ class Api {
   Future<Response> verificationOtp(UserData data,String otp)
   async{
     return await dio.post("", data: {
-      "title": 'SendVerification',
-      "description": "Send Verification Code Student",
+      "title": 'UserVerification',
+      "description": "User Verification",
       "ReqUserID":  data.activeUserCode,
+      "ReqVeriCode": otp,
       "ReqAcastart": activeAcastart,
       "ReqPhoneCode": "123456", //firebase api code
       "ReqSMSType":appRunningMode,

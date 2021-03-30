@@ -10,7 +10,7 @@ import 'package:school_sampleproj/utils/database.dart';
 class PreLoginProvider extends ChangeNotifier{
 
   List<UserData> loggedUserList;
-  dynamic is_user_update=appstate.defaultstate;
+  dynamic state=appstate.defaultstate;
   loadLoginUsers() async{
     loggedUserList=[];
    List<dynamic> ls= await DatabaseUtil().getLoggedUser();
@@ -26,7 +26,7 @@ notifyListeners();
 
   // dependecy on otp screen
   isUserListUpdate(){
-    if(is_user_update!=appstate.reload){
+    if(state!=appstate.reload){
       return;
     }
     appstate.defaultstate;

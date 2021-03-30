@@ -60,7 +60,7 @@ class _NotificationScreenState extends State<NotificationScreen> {
                             image: value.notifications[index].photoLocation,date: value.notifications[index].hWDateStr
                             ))),
                     child: TaskItem(description: "${value.notifications[index].hWRemarks}",date:"Date: ${"${value.notifications[index].hWDateStr}"}",
-                      subject: "${"${value.notifications[index].hWDateStr2}"}"),
+                      subject: "${"${value.notifications[index].hWDateStr2}"}",imageurl:"${value.notifications[index].photoLocation}" ,),
                   ),
                 ),
 

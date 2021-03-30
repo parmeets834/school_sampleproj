@@ -25,8 +25,8 @@ const color_grid = [Color(0xFF66dbfd), Color(0xFF058aed)];
 
 
 // objects
-UserData currunt_user;
-UserData otp_user;
+ UserData currunt_user;
+ UserData otp_user;
 
 
 //-----------------------------------outside parameter given by client----------------------------------------------------------------

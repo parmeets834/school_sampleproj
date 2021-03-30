@@ -32,9 +32,9 @@ class _OtpScreenState extends State<OtpScreen> {
 
   @override
   void initState() {
-  /*  final provider = Provider.of<OtpProvider>(context, listen: false);
-    provider.sentOtp();*/
-
+    final provider = Provider.of<OtpProvider>(context, listen: false);
+    provider.sentOtp();
+    provider.skey = new GlobalKey<ScaffoldState>();
   }
 
   @override
@@ -43,7 +43,7 @@ class _OtpScreenState extends State<OtpScreen> {
 
     final provider = Provider.of<OtpProvider>(context);
     provider.context = context;
-    provider.skey = new GlobalKey<ScaffoldState>();
+
     _height = MediaQuery.of(context).size.height;
     _width = MediaQuery.of(context).size.width;
     _pixelRatio = MediaQuery.of(context).devicePixelRatio;

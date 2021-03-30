@@ -12,6 +12,7 @@ import 'package:school_sampleproj/widget/Cards/user_cards.dart';
 import 'package:school_sampleproj/widget/other/responsive_ui.dart';
 
 class PreLogin extends StatefulWidget {
+  static const classname="/PreLogin";
   @override
   _PreLoginState createState() => _PreLoginState();
 }
@@ -142,10 +143,11 @@ class _PreLoginState extends State<PreLogin> {
                             Navigator.pushNamed(
                                 context, SignUpScreen.classname);
                           },
+                          // todo add no user register if list is empty
                           child: Padding(
                               padding: EdgeInsets.only(left: 15),
                               child: Text(
-                                "User already Registered",
+                                "Registered Users List",
                                 style: TextStyle(
 
                                     fontWeight: FontWeight.bold, fontSize: 17),
