@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
+import 'package:pull_to_refresh/pull_to_refresh.dart';
 import 'package:school_sampleproj/Screen/Mentor/mentor_list.dart';
 import 'package:school_sampleproj/Screen/PostScreen/PostScren.dart';
 
@@ -22,6 +23,8 @@ class Mentor extends StatefulWidget {
 }
 
 class _MentorState extends State<Mentor> {
+
+
   @override
   Widget build(BuildContext context) {
     Size screenSize = getScreenSize(context);
@@ -38,19 +41,25 @@ class _MentorState extends State<Mentor> {
               text: "Click to Add New Request",
               onClick: () { Navigator.pushNamed(context, MentorList.classname);},
             ),
-            Container(
-              padding: EdgeInsets.only(top:100),
-              child: ListView.builder(
-                itemBuilder: (_, index) => InkWell(
-                  child: InkWell(
-                    onTap:()=> Navigator.pushNamed(context, MentorRequest.classname),
-                    child: TeacherRequestCard(),
-                  ),
-                ),
+            ((){
+              if(value.state==appstate.loading){
+                return Container(child: Center(child: CircularProgressIndicator(),),);
+              }else if(value.state==appstate.laoding_complete){
+                return    Container(
+                  padding: EdgeInsets.only(top:100),
+                  child: ListView.builder(
+                    itemBuilder: (_, index) => InkWell(
+                      child: InkWell(
+                        onTap:()=> Navigator.pushNamed(context, MentorRequest.classname),
+                        child: TeacherRequestCard(model: value.mentorRequestList[index],),
+                      ),
+                    ),
 
-                itemCount: 10,
-              ),
-            )
+                    itemCount: value.mentorRequestList.length,
+                  ),
+                );
+              }
+            }())
             // custom card
           ],
         );
@@ -69,5 +78,11 @@ class _MentorState extends State<Mentor> {
       ),*/
     );
 
+  }
+
+  @override
+  void initState() {
+    final provider=Provider.of<MentorProvider>(context,listen:  false);
+    provider.loadData();
   }
 }

@@ -79,6 +79,8 @@ class Api {
     print("Dio Error Response Data is ${error.response.data}");
   }
 
+  //---------------------------------otp------------------------------------------------
+
 // step 1
   Future checkUserRegister(String Uid) async {
     String activityDescStr = getUserActivityString(Uid, Uid,
@@ -129,4 +131,28 @@ class Api {
       options: Options(contentType: "application/x-www-form-urlencoded"),
     );
   }
+
+  //--------------------------------mentor-------------------------------------------------
+
+  Future<Response> getParentRequest(UserData data) async {
+    String ActivityDescStr = getUserActivityString(data.activeUserCode,
+        data.activeUserCode, "Class Home work List", "Student Apk.");
+
+    return await dio.post(
+      "",
+      data: {
+        "title": 'ParentMessage',
+        "description": ActivityDescStr,
+        "ReqClass": data.activeUserClass,
+        "ReqSection": data.activeUserSection,
+        "ReqYear":activeAcastart,
+        "ReqPara1": '',
+        "ReqAdmNo": data.activeUserCode,
+      },
+      options: Options(contentType: "application/x-www-form-urlencoded"),
+    );
+  }
+
+
+
 }
