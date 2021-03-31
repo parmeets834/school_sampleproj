@@ -74,6 +74,7 @@ class _NotificationScreenState extends State<NotificationScreen> {
 
   @override
   void initState() {
-
+final provider=Provider.of<NotificationProvider>(context,listen: false);
+  provider.state=appstate.defaultstate;
   }
 }

@@ -16,7 +16,7 @@ List<DasBoardItem> items=[
   DasBoardItem(image: 'assets/online-lession.svg',title: 'My Mentors'),
   DasBoardItem(image: 'assets/calender.svg',title: 'Time Table'),
   DasBoardItem(image: 'assets/chat.svg',title: 'Ask My Mentor'), //6
-  DasBoardItem(image: 'assets/id-card.svg',title: 'This is Me'),
+  DasBoardItem(image: 'assets/id-card2.svg',title: 'This is Me'),
   DasBoardItem(image: 'assets/graph.svg',title: 'My performance'),
   DasBoardItem(image: 'assets/canvas.svg',title: 'Notice Board'),
   DasBoardItem(image: 'assets/report1.svg',title: 'Fees Details'),

@@ -53,7 +53,7 @@ class TeacherRequestCard extends StatelessWidget {
                                   style: TextStyle(color: Colors.black54),);
                               }
                               if (model.tchReply != "") {
-                                return Text("Status: Pending", maxLines: 2,
+                                return Text("Status: Replied", maxLines: 2,
                                   overflow: TextOverflow.ellipsis,
                                   style: TextStyle(color: Colors.black54),);
                               }

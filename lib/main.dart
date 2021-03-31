@@ -8,6 +8,7 @@ import 'package:school_sampleproj/Screen/Notification/notification_screen.dart';
 import 'package:school_sampleproj/Screen/PreLogin/pre_login.dart';
 import 'package:school_sampleproj/model.dart';
 import 'package:school_sampleproj/providers/dash_board_provider.dart';
+import 'package:school_sampleproj/providers/mentor/mentor_list_provider.dart';
 import 'package:school_sampleproj/providers/mentor/mentor_provider.dart';
 import 'package:school_sampleproj/providers/notification/notification_provider.dart';
 import 'package:school_sampleproj/providers/pre_login/pre_login_provider.dart';
@@ -47,6 +48,7 @@ void main() async{
         ChangeNotifierProvider(create: (ctx) => DashBoardProvider(),),
         ChangeNotifierProvider(create: (ctx) => TaskDataProvider()),
         ChangeNotifierProvider(create: (ctx) => MentorProvider()),
+        ChangeNotifierProvider(create: (ctx) => MentorListProvider()),
         ChangeNotifierProvider(create: (ctx) => MentorRequestProvider()),
         ChangeNotifierProvider(create: (ctx) => SplashProvider()),
         ChangeNotifierProvider(create: (ctx) => PreLoginProvider()),

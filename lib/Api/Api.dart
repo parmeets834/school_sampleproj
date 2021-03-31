@@ -5,11 +5,13 @@
 import 'dart:io';
 
 import 'package:dio/dio.dart';
+import 'package:intl/intl.dart';
 import 'package:school_sampleproj/global/constant_function.dart';
 import 'package:school_sampleproj/global/constants.dart';
 import 'package:school_sampleproj/model.dart';
 
 import 'DioClientInstance.dart';
+import '../global/constants.dart';
 
 class Api {
   Dio dio = ApiService().getclient();
@@ -153,6 +155,37 @@ class Api {
     );
   }
 
+  Future<Response> getMentorList(UserData data) async {
+    String ActivityDescStr = getUserActivityString(data.activeUserCode,
+        data.activeUserName, "Class Home work List", "Student Apk.");
+    DateTime now = DateTime.now();
+    String curDate = DateFormat('DD-MM-YYYY').format(now);
+    curDate=now.day.toString()+"-"+now.month.toString()+"-"+now.year.toString();
 
+
+    return await dio.post("",
+
+      data: {
+        "title": 'UpdatePM',
+        "description": ActivityDescStr ,
+        "ReqAcastart": activeAcastart ,
+        "ReqAdmno": data.activeUserCode ,
+        "ReqPMDate": curDate ,
+        "ReqPMessage": "Check Message " ,
+        "ReqSubject":  "" ,
+
+/*
+
+        "title": 'ParentMessage',
+        "description": ActivityDescStr,
+        "ReqClass": data.activeUserClass,
+        "ReqSection": data.activeUserSection,
+        "ReqYear":activeAcastart,
+        "ReqPara1": '',
+        "ReqAdmNo": data.activeUserCode,*/
+      },
+      options: Options(contentType: "application/x-www-form-urlencoded"),
+    );
+  }
 
 }
