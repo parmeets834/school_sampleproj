@@ -9,6 +9,7 @@ import 'package:intl/intl.dart';
 import 'package:school_sampleproj/global/constant_function.dart';
 import 'package:school_sampleproj/global/constants.dart';
 import 'package:school_sampleproj/model.dart';
+import 'package:school_sampleproj/model/Carrage.dart';
 
 import 'DioClientInstance.dart';
 import '../global/constants.dart';
@@ -157,23 +158,20 @@ class Api {
 
   Future<Response> getMentorList(UserData data) async {
     String ActivityDescStr = getUserActivityString(data.activeUserCode,
-        data.activeUserName, "Class Home work List", "Student Apk.");
+        data.activeUserName, "Teachers List of the Class", "Student Apk.");
     DateTime now = DateTime.now();
     String curDate = DateFormat('DD-MM-YYYY').format(now);
     curDate=now.day.toString()+"-"+now.month.toString()+"-"+now.year.toString();
 
 
     return await dio.post("",
-
       data: {
-        "title": 'UpdatePM',
-        "description": ActivityDescStr ,
-        "ReqAcastart": activeAcastart ,
-        "ReqAdmno": data.activeUserCode ,
-        "ReqPMDate": curDate ,
-        "ReqPMessage": "Check Message " ,
-        "ReqSubject":  "" ,
 
+        "title": 'TeachersSubjects',
+        "description": ActivityDescStr,
+        "ReqClass":  data.activeUserClass,
+        "ReqSection":  data.activeUserSection,
+        "ReqYear": activeAcastart,
 /*
 
         "title": 'ParentMessage',
@@ -186,6 +184,34 @@ class Api {
       },
       options: Options(contentType: "application/x-www-form-urlencoded"),
     );
+  }
+
+  Future<void> sentMentorRequest(UserData data,Carrage carrage,String message) async {
+
+
+    String ActivityDescStr = getUserActivityString(data.activeUserCode,
+        data.activeUserName, "Added An Entry To Communication To Teachers List", "Student Apk.");
+    DateTime now = DateTime.now();
+    String curDate = DateFormat('DD-MM-YYYY').format(now);
+    curDate=now.day.toString()+"-"+now.month.toString()+"-"+now.year.toString();
+
+
+    return await dio.post("",
+      data: {
+
+        "title": 'UpdatePM',
+        "description": ActivityDescStr ,
+        "ReqAcastart": activeAcastart ,
+        "ReqAdmno":  data.activeUserCode,
+        "ReqPMDate": curDate ,
+        "ReqPMessage": message ,
+        "ReqSubject": carrage.teacherDetailModel.subj ,
+      },
+      options: Options(contentType: "application/x-www-form-urlencoded"),
+    );
+
+
+
   }
 
 }

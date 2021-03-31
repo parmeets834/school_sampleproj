@@ -4,10 +4,14 @@
 
 import 'package:school_sampleproj/model.dart';
 import 'package:school_sampleproj/model/post_model.dart';
+import 'package:school_sampleproj/model/teacher_detail_model.dart';
+
+import 'mentor_request_model.dart';
 
 class Carrage{
   UserData userData;
   PostModel postModel;
-
-  Carrage({this.userData,this.postModel});
+  TeacherDetailModel teacherDetailModel;
+  MentorRequestModel mentorRequestModel;
+  Carrage({this.userData,this.postModel,this.teacherDetailModel,this.mentorRequestModel});
 }

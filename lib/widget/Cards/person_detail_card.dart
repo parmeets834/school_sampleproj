@@ -4,6 +4,12 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class PersonDetailCard extends StatelessWidget {
+ String name;
+ String classname;
+
+
+ PersonDetailCard({this.name="not defined", this.classname="not defined"});
+
   @override
   Widget build(BuildContext context) {
     return  Card(
@@ -36,7 +42,7 @@ class PersonDetailCard extends StatelessWidget {
                             fontSize: 14, fontWeight: FontWeight.bold),
                       ),
                       Text(
-                        " Kashnmir",
+                        " ${name}",
                         style: GoogleFonts.raleway(
                           fontSize: 14,),
                       ),
@@ -53,7 +59,7 @@ class PersonDetailCard extends StatelessWidget {
                           fontSize: 14, fontWeight: FontWeight.bold,
                         ),
                       ),
-                      Text(" 10th"),
+                      Text(    " ${classname}"),
                     ],
                   ),
                 ],

@@ -7,6 +7,7 @@ import 'package:school_sampleproj/Screen/PostScreen/PostScren.dart';
 
 import 'package:school_sampleproj/global/constant_function.dart';
 import 'package:school_sampleproj/global/constants.dart';
+import 'package:school_sampleproj/model/Carrage.dart';
 import 'package:school_sampleproj/providers/mentor/mentor_provider.dart';
 import 'package:school_sampleproj/widget/Cards/add_card.dart';
 import 'package:school_sampleproj/widget/Cards/task_item.dart';
@@ -14,6 +15,7 @@ import 'package:school_sampleproj/widget/Cards/teacher_request_card.dart';
 import 'package:school_sampleproj/widget/app_bar/app_bar.dart';
 
 import 'mentor_request.dart';
+import 'mentor_response.dart';
 
 class Mentor extends StatefulWidget {
   static const classname = "/Mentor";
@@ -50,7 +52,7 @@ class _MentorState extends State<Mentor> {
                   child: ListView.builder(
                     itemBuilder: (_, index) => InkWell(
                       child: InkWell(
-                        onTap:()=> Navigator.pushNamed(context, MentorRequest.classname),
+                        onTap:()=> Navigator.pushNamed(context, MentorResponse.classname,arguments: Carrage(mentorRequestModel: value.mentorRequestList[index])),
                         child: TeacherRequestCard(model: value.mentorRequestList[index],),
                       ),
                     ),

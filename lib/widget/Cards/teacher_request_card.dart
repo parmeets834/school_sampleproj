@@ -66,10 +66,10 @@ class TeacherRequestCard extends StatelessWidget {
                     ),
                   ),
                   SizedBox(height: 5,),
-                  Text("Subject: Punjabi"),
+                  Text("Subject: ${model.hwSubject}"),
                   SizedBox(height: 5,),
                   Text(
-                    "${model.tchReply==""?"-":model.tchReply}",
+                    "Message: ${model.hwRemarks==""?"-":model.hwRemarks}",
                     maxLines: 2, overflow: TextOverflow.ellipsis,),
                   SizedBox(height: 5,),
                   Text("Date : ${model.hwDateStr}",

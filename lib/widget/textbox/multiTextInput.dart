@@ -3,6 +3,16 @@ import 'package:flutter/material.dart';
 
 
 class MultiLineTextInput extends StatelessWidget {
+  String m_hintText;
+  String m_helperText;
+  String m_labelText;
+  TextEditingController controller;
+
+  MultiLineTextInput(
+      {this.m_hintText="", this.m_helperText="", this.m_labelText="", this.controller});
+
+
+
   @override
   Widget build(BuildContext context) {
     return  new Theme(
@@ -11,15 +21,16 @@ class MultiLineTextInput extends StatelessWidget {
         primaryColorDark: Colors.grey,
       ),
       child: new TextField(
+        controller: controller,
         minLines: 1,//Normal textInputField will be displayed
         maxLines: 5,// when user presses enter it will adapt to it
         keyboardType: TextInputType.multiline,
         decoration: new InputDecoration(
             border: new OutlineInputBorder(
                 borderSide: new BorderSide(color: Colors.teal)),
-            hintText: "Please Write Here",
-            helperText: 'Write all relvant point in this request',
-            labelText: 'Mentor Request',
+            hintText: m_hintText,
+            helperText: m_helperText,
+            labelText: m_labelText,
             prefixIcon: const Icon(
               Icons.pending_actions,
             ),

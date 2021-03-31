@@ -10,6 +10,7 @@ import 'package:school_sampleproj/model.dart';
 import 'package:school_sampleproj/providers/dash_board_provider.dart';
 import 'package:school_sampleproj/providers/mentor/mentor_list_provider.dart';
 import 'package:school_sampleproj/providers/mentor/mentor_provider.dart';
+import 'package:school_sampleproj/providers/mentor/mentor_response.dart';
 import 'package:school_sampleproj/providers/notification/notification_provider.dart';
 import 'package:school_sampleproj/providers/pre_login/pre_login_provider.dart';
 import 'package:school_sampleproj/providers/splash/splash_provider.dart';
@@ -17,6 +18,7 @@ import 'package:school_sampleproj/utils/database.dart';
 import 'Screen/Mentor/mentor.dart';
 import 'Screen/Mentor/mentor_list.dart';
 import 'Screen/Mentor/mentor_request.dart';
+import 'Screen/Mentor/mentor_response.dart';
 import 'Screen/PostScreen/ImageDisplay.dart';
 import 'Screen/SignIn/registration.dart';
 
@@ -50,6 +52,7 @@ void main() async{
         ChangeNotifierProvider(create: (ctx) => MentorProvider()),
         ChangeNotifierProvider(create: (ctx) => MentorListProvider()),
         ChangeNotifierProvider(create: (ctx) => MentorRequestProvider()),
+        ChangeNotifierProvider(create: (ctx) => MentorResponseProvider()),
         ChangeNotifierProvider(create: (ctx) => SplashProvider()),
         ChangeNotifierProvider(create: (ctx) => PreLoginProvider()),
         ChangeNotifierProvider(create: (ctx) => NotificationProvider()),
@@ -80,6 +83,7 @@ class MyApp extends StatelessWidget {
         Task.classname: (context) => Task(),
         Mentor.classname:(context)=> Mentor(),
         MentorRequest.classname:(context)=>MentorRequest(),
+        MentorResponse.classname:(context)=>MentorResponse(),
         MentorList.classname:(context)=>MentorList(),
         NotificationScreen.classname:(context)=>NotificationScreen(),
         ImageDisplay.classname:(context)=>ImageDisplay(),
