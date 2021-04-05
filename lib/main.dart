@@ -91,7 +91,7 @@ class MyApp extends StatelessWidget {
         NotificationScreen.classname:(context)=>NotificationScreen(),
         ImageDisplay.classname:(context)=>ImageDisplay(),
         PreLogin.classname:(context)=>PreLogin(),
-        StudentVideoPlayer.classname:(context)=>StudentVideoPlayer()
+        VideoPlayer.classname:(context)=>VideoPlayer()
       },
     );
   }

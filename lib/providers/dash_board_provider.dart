@@ -40,7 +40,7 @@ List<DasBoardItem> items=[
       break;
       case 1: Navigator.pushNamed(context, Task.classname);
       break;
-      case 2: Navigator.pushNamed(context, StudentVideoPlayer.classname);
+      case 2: Navigator.pushNamed(context, VideoPlayer.classname);
       break;
 
       case 5: Navigator.pushNamed(context, Mentor.classname);
