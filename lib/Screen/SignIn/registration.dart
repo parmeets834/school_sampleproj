@@ -2,13 +2,13 @@ import 'package:flutter/material.dart';
 
 import 'package:provider/provider.dart';
 import 'package:school_sampleproj/global/constants.dart';
+import 'package:school_sampleproj/providers/registration.dart';
 import 'package:school_sampleproj/widget/other/allWidget.dart';
 import 'package:school_sampleproj/widget/other/custom_shape.dart';
 import 'package:school_sampleproj/widget/other/customappbar.dart';
 import 'package:school_sampleproj/widget/other/responsive_ui.dart';
 import 'package:school_sampleproj/widget/textbox/textformfield.dart';
 
-import '../../providers/sign_up_provider.dart';
 
 class SignUpScreen extends StatefulWidget {
   static const classname = "/SignUpScreen";
@@ -27,14 +27,14 @@ class _SignUpScreenState extends State<SignUpScreen> {
 
   @override
   void initState() {
-    final provider = Provider.of<SignUpProvider>(context, listen: false);
+    final provider = Provider.of<RegistrationProvider>(context, listen: false);
     provider.skey = new GlobalKey<ScaffoldState>();
     provider.schooldController.text=activeClientCode;
   }
 
   @override
   Widget build(BuildContext context) {
-    final provider = Provider.of<SignUpProvider>(context);
+    final provider = Provider.of<RegistrationProvider>(context);
     provider.context = context;
 
     _height = MediaQuery.of(context).size.height;
@@ -173,7 +173,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
 
   Widget userIdTextFormField() {
     return CustomTextField(
-      textEditingController: Provider.of<SignUpProvider>(context, listen: false)
+      textEditingController: Provider.of<RegistrationProvider>(context, listen: false)
           .userIdcontroller,
       keyboardType: TextInputType.text,
       icon: Icons.person,
@@ -184,7 +184,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
   Widget schoolIdController() {
     return CustomTextField(
 
-      textEditingController: Provider.of<SignUpProvider>(context, listen: false)
+      textEditingController: Provider.of<RegistrationProvider>(context, listen: false)
           .schooldController,
       keyboardType: TextInputType.text,
       icon: Icons.apartment,
@@ -206,9 +206,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
 
 
   _getDropDownUserType() {
-    final provider=Provider.of<SignUpProvider>(context,listen: false);
+    final provider=Provider.of<RegistrationProvider>(context,listen: false);
     return CustomAnyWidget(
-      textEditingController: Provider.of<SignUpProvider>(context).activeTypeUser,
+      textEditingController: Provider.of<RegistrationProvider>(context).activeTypeUser,
       keyboardType: TextInputType.number,
       icon: Icons.phone,
       hint: "Student Type...",
@@ -275,7 +275,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
       elevation: 0,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30.0)),
       onPressed: () {
-        Provider.of<SignUpProvider>(context, listen: false).performRegister();
+        Provider.of<RegistrationProvider>(context, listen: false).performRegister();
       },
       textColor: Colors.white,
       padding: EdgeInsets.all(0.0),

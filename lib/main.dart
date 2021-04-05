@@ -7,12 +7,14 @@ import 'package:school_sampleproj/Screen/DashBoard/dashboard_screen.dart';
 import 'package:school_sampleproj/Screen/Notification/notification_screen.dart';
 import 'package:school_sampleproj/Screen/PreLogin/pre_login.dart';
 import 'package:school_sampleproj/model.dart';
+import 'file:///D:/Practice%20folder/school_sampleproj/lib/providers/video_player.dart';
 import 'package:school_sampleproj/providers/dash_board_provider.dart';
 import 'package:school_sampleproj/providers/mentor/mentor_list_provider.dart';
 import 'package:school_sampleproj/providers/mentor/mentor_provider.dart';
 import 'package:school_sampleproj/providers/mentor/mentor_response.dart';
 import 'package:school_sampleproj/providers/notification/notification_provider.dart';
 import 'package:school_sampleproj/providers/pre_login/pre_login_provider.dart';
+import 'package:school_sampleproj/providers/registration.dart';
 import 'package:school_sampleproj/providers/splash/splash_provider.dart';
 import 'package:school_sampleproj/utils/database.dart';
 import 'Screen/Mentor/mentor.dart';
@@ -29,8 +31,8 @@ import 'Screen/PostScreen/PostScren.dart';
 import 'Screen/Task/Task.dart';
 
 
+import 'Screen/VideoPlayer/video_player.dart';
 import 'providers/mentor/mentor_request.dart';
-import 'providers/sign_up_provider.dart';
 import 'Screen/Spash/splash.dart';
 import 'providers/task/task_provider.dart';
 
@@ -45,7 +47,7 @@ void main() async{
       .then((_) {
     runApp(MultiProvider(
       providers: [
-        ChangeNotifierProvider(create: (ctx) => SignUpProvider()),
+        ChangeNotifierProvider(create: (ctx) => RegistrationProvider()),
         ChangeNotifierProvider(create: (ctx) => OtpProvider()),
         ChangeNotifierProvider(create: (ctx) => DashBoardProvider(),),
         ChangeNotifierProvider(create: (ctx) => TaskDataProvider()),
@@ -56,6 +58,7 @@ void main() async{
         ChangeNotifierProvider(create: (ctx) => SplashProvider()),
         ChangeNotifierProvider(create: (ctx) => PreLoginProvider()),
         ChangeNotifierProvider(create: (ctx) => NotificationProvider()),
+        ChangeNotifierProvider(create: (ctx) => VideoPlayerProvider()),
       ],
       child: MyApp(),
     ));
@@ -87,7 +90,8 @@ class MyApp extends StatelessWidget {
         MentorList.classname:(context)=>MentorList(),
         NotificationScreen.classname:(context)=>NotificationScreen(),
         ImageDisplay.classname:(context)=>ImageDisplay(),
-        PreLogin.classname:(context)=>PreLogin()
+        PreLogin.classname:(context)=>PreLogin(),
+        VideoPlayer.classname:(context)=>VideoPlayer()
       },
     );
   }

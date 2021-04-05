@@ -13,7 +13,6 @@ import 'package:school_sampleproj/widget/other/customappbar.dart';
 import 'package:school_sampleproj/widget/other/responsive_ui.dart';
 import 'package:school_sampleproj/widget/textbox/textformfield.dart';
 
-import '../../providers/sign_up_provider.dart';
 
 class OtpScreen extends StatefulWidget {
   static const classname = "/OtpScreen";

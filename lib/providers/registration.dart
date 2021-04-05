@@ -16,7 +16,7 @@ import 'package:sqflite/sqflite.dart';
 
 import 'package:uuid/uuid.dart';
 
-class SignUpProvider extends ChangeNotifier {
+class RegistrationProvider extends ChangeNotifier {
   TextEditingController userIdcontroller = new TextEditingController();
   TextEditingController schooldController = new TextEditingController();
   TextEditingController activeTypeUser = new TextEditingController();

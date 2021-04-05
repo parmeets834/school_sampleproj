@@ -4,6 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:school_sampleproj/Screen/Mentor/mentor.dart';
 import 'package:school_sampleproj/Screen/Notification/notification_screen.dart';
 import 'package:school_sampleproj/Screen/Task/Task.dart';
+import 'package:school_sampleproj/Screen/VideoPlayer/video_player.dart';
 import 'package:school_sampleproj/model/Carrage.dart';
 import 'package:school_sampleproj/model/dashboard_items.dart';
 
@@ -37,11 +38,14 @@ List<DasBoardItem> items=[
     switch(index){
       case 0: Navigator.pushNamed(context, NotificationScreen.classname,arguments: carrage);
       break;
-
       case 1: Navigator.pushNamed(context, Task.classname);
       break;
+      case 2: Navigator.pushNamed(context, VideoPlayer.classname);
+      break;
+
       case 5: Navigator.pushNamed(context, Mentor.classname);
       break;
+
     }
 
   }
