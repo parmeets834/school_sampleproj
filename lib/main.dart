@@ -4,9 +4,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 import 'package:school_sampleproj/Screen/DashBoard/dashboard_screen.dart';
+import 'package:school_sampleproj/Screen/MediaViewers/ImageViewer.dart';
+import 'package:school_sampleproj/Screen/MediaViewers/pdf_view.dart';
+import 'package:school_sampleproj/Screen/MediaViewers/youtube.dart';
 import 'package:school_sampleproj/Screen/Notification/notification_screen.dart';
 import 'package:school_sampleproj/Screen/PreLogin/pre_login.dart';
 import 'package:school_sampleproj/model.dart';
+import 'package:school_sampleproj/providers/gallery/gallery_providder.dart';
+import 'Screen/Gallery/gallery_screen.dart';
+import 'Screen/MediaViewers/video_player.dart';
 import 'file:///D:/Practice%20folder/school_sampleproj/lib/providers/video_player.dart';
 import 'package:school_sampleproj/providers/dash_board_provider.dart';
 import 'package:school_sampleproj/providers/mentor/mentor_list_provider.dart';
@@ -29,9 +35,6 @@ import 'package:school_sampleproj/providers/otp_provider.dart';
 import 'Screen/OtpScreen/otp_screen.dart';
 import 'Screen/PostScreen/PostScren.dart';
 import 'Screen/Task/Task.dart';
-
-
-import 'Screen/VideoPlayer/video_player.dart';
 import 'providers/mentor/mentor_request.dart';
 import 'Screen/Spash/splash.dart';
 import 'providers/task/task_provider.dart';
@@ -59,6 +62,7 @@ void main() async{
         ChangeNotifierProvider(create: (ctx) => PreLoginProvider()),
         ChangeNotifierProvider(create: (ctx) => NotificationProvider()),
         ChangeNotifierProvider(create: (ctx) => VideoPlayerProvider()),
+        ChangeNotifierProvider(create: (ctx) => GalleryProvider()),
       ],
       child: MyApp(),
     ));
@@ -90,8 +94,12 @@ class MyApp extends StatelessWidget {
         MentorList.classname:(context)=>MentorList(),
         NotificationScreen.classname:(context)=>NotificationScreen(),
         ImageDisplay.classname:(context)=>ImageDisplay(),
+        ImageViewer.classname:(context)=>ImageViewer(),
         PreLogin.classname:(context)=>PreLogin(),
-        VideoPlayer.classname:(context)=>VideoPlayer()
+        VideoPlayer.classname:(context)=>VideoPlayer(),
+        Gallery.classname:(context)=>Gallery(),
+        Youtube.classname:(context)=>Youtube(),
+        PdfView.classname:(context)=>PdfView()
       },
     );
   }

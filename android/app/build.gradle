@@ -27,6 +27,11 @@ apply from: "$flutterRoot/packages/flutter_tools/gradle/flutter.gradle"
 
 android {
     compileSdkVersion 29
+    /*dhruv add on*/
+    packagingOptions {
+        exclude 'META-INF/DEPENDENCIES'
+        pickFirst 'lib/arm64-v8a/libc++_shared.so'
+    }
 
     sourceSets {
         main.java.srcDirs += 'src/main/kotlin'
@@ -50,7 +55,9 @@ android {
             // TODO: Add your own signing config for the release build.
             // Signing with the debug keys for now, so `flutter run --release` works.
             signingConfig signingConfigs.debug
+           // proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
+
     }
 }
 

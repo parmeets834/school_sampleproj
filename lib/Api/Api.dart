@@ -148,7 +148,7 @@ class Api {
         "description": ActivityDescStr,
         "ReqClass": data.activeUserClass,
         "ReqSection": data.activeUserSection,
-        "ReqYear":activeAcastart,
+        "ReqYear": activeAcastart,
         "ReqPara1": '',
         "ReqAdmNo": data.activeUserCode,
       },
@@ -161,16 +161,19 @@ class Api {
         data.activeUserName, "Teachers List of the Class", "Student Apk.");
     DateTime now = DateTime.now();
     String curDate = DateFormat('DD-MM-YYYY').format(now);
-    curDate=now.day.toString()+"-"+now.month.toString()+"-"+now.year.toString();
+    curDate = now.day.toString() +
+        "-" +
+        now.month.toString() +
+        "-" +
+        now.year.toString();
 
-
-    return await dio.post("",
+    return await dio.post(
+      "",
       data: {
-
         "title": 'TeachersSubjects',
         "description": ActivityDescStr,
-        "ReqClass":  data.activeUserClass,
-        "ReqSection":  data.activeUserSection,
+        "ReqClass": data.activeUserClass,
+        "ReqSection": data.activeUserSection,
         "ReqYear": activeAcastart,
 /*
 
@@ -186,32 +189,55 @@ class Api {
     );
   }
 
-  Future<void> sentMentorRequest(UserData data,Carrage carrage,String message) async {
-
-
-    String ActivityDescStr = getUserActivityString(data.activeUserCode,
-        data.activeUserName, "Added An Entry To Communication To Teachers List", "Student Apk.");
+  Future<void> sentMentorRequest(
+      UserData data, Carrage carrage, String message) async {
+    String ActivityDescStr = getUserActivityString(
+        data.activeUserCode,
+        data.activeUserName,
+        "Added An Entry To Communication To Teachers List",
+        "Student Apk.");
     DateTime now = DateTime.now();
     String curDate = DateFormat('DD-MM-YYYY').format(now);
-    curDate=now.day.toString()+"-"+now.month.toString()+"-"+now.year.toString();
+    curDate = now.day.toString() +
+        "-" +
+        now.month.toString() +
+        "-" +
+        now.year.toString();
 
-
-    return await dio.post("",
+    return await dio.post(
+      "",
       data: {
-
         "title": 'UpdatePM',
-        "description": ActivityDescStr ,
-        "ReqAcastart": activeAcastart ,
-        "ReqAdmno":  data.activeUserCode,
-        "ReqPMDate": curDate ,
-        "ReqPMessage": message ,
-        "ReqSubject": carrage.teacherDetailModel.subj ,
+        "description": ActivityDescStr,
+        "ReqAcastart": activeAcastart,
+        "ReqAdmno": data.activeUserCode,
+        "ReqPMDate": curDate,
+        "ReqPMessage": message,
+        "ReqSubject": carrage.teacherDetailModel.subj,
       },
       options: Options(contentType: "application/x-www-form-urlencoded"),
     );
-
-
-
   }
+//-------------------------------------Gallery--------------------------------------------------
+  Future<Response> getGalleryContent(UserData data) async {
+    String ActivityDescStr = getUserActivityString(data.activeUserCode,
+        data.activeUserName, "Study Materials List", "Student Apk.");
+
+    return await dio.post(
+      "",
+      data: {
+        "title": 'StudyMaterials',
+        "description": ActivityDescStr,
+        "ReqUserID": data.activeUserCode,
+        "ReqClass": data.activeUserClass,
+        "ReqSection": data.activeUserSection,
+        "ReqYear": activeAcastart,
+        "ReqPara1": '',
+        "ReqAdmNo": '',
+      },
+      options: Options(contentType: "application/x-www-form-urlencoded"),
+    );
+  }
+
 
 }
