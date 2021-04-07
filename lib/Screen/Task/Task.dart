@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
+import 'package:school_sampleproj/Screen/HomeWorkDisplayScreen/home_work_screen.dart';
 import 'package:school_sampleproj/Screen/PostScreen/PostScren.dart';
 import 'package:school_sampleproj/global/constant_function.dart';
 import 'package:school_sampleproj/global/constants.dart';
@@ -54,8 +55,10 @@ class _TaskState extends State<Task> {
               child: ListView.builder(
                 itemBuilder: (_, index) => InkWell(
                   child: InkWell(
-                    onTap:()=> Navigator.pushNamed(context, PostScreen.classname,
-                        arguments: Carrage(postModel: PostModel(date:value.taskList[index].hwDateStr,
+                    onTap:()=> Navigator.pushNamed(context, HomeWorkScreen.classname,
+                        arguments: Carrage(postModel: PostModel(
+                            mediaUrl:value.taskList[index].photoLocation ,
+                            date:value.taskList[index].hwDateStr,
                             content: value.taskList[index].hwRemarks,title: value.taskList[index].hwRemarks))),
                     child: TaskItem(description: "${value.taskList[index].hwRemarks} ",date:"Date:${value.taskList[index].hwDateStr}",
                       subject: "${value.taskList[index].hwSubject}"),

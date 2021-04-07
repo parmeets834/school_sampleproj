@@ -2,20 +2,21 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
 import 'package:provider/provider.dart';
+import 'package:school_sampleproj/Screen/MediaViewers/ImageViewer.dart';
+import 'package:school_sampleproj/Screen/MediaViewers/video_player.dart';
 import 'package:school_sampleproj/global/constants.dart';
 import 'package:school_sampleproj/model/Carrage.dart';
 import 'package:school_sampleproj/model/post_model.dart';
 
-import 'ImageDisplay.dart';
 
-class PostScreen extends StatefulWidget {
+class HomeWorkScreen extends StatefulWidget {
   static const classname = "/PostScreen";
 
   @override
-  _PostScreenState createState() => _PostScreenState();
+  _HomeWorkScreenState createState() => _HomeWorkScreenState();
 }
 
-class _PostScreenState extends State<PostScreen> {
+class _HomeWorkScreenState extends State<HomeWorkScreen> {
   @override
   Widget build(BuildContext context) {
     Carrage carrage=ModalRoute.of(context).settings.arguments;
@@ -37,10 +38,10 @@ class _PostScreenState extends State<PostScreen> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 ((){
-                  if(postData.mediaUrl!=null )
+                  if(postData.mediaUrl!=null && postData.mediaType.toLowerCase()=="image" )
                     return InkWell(
                       onTap: (){
-                        Navigator.pushNamed(context,ImageDisplay.classname,arguments: carrage);
+                        Navigator.pushNamed(context,ImageViewer.classname,arguments: carrage.postModel.mediaUrl);
                       },
                       child: ConstrainedBox(
                         constraints: new BoxConstraints(
@@ -63,6 +64,32 @@ class _PostScreenState extends State<PostScreen> {
                         ),
                       ),
                     );
+                  if(postData.mediaUrl!=null && postData.mediaType.toLowerCase()=="video" )
+                    return InkWell(
+                      onTap: (){
+                        Navigator.pushNamed(context,VideoPlayer.classname,arguments: carrage.postModel.mediaUrl);
+                      },
+                      child: ConstrainedBox(
+                        constraints: new BoxConstraints(
+                          maxHeight: 250,
+                        ),
+                        child: Container(
+                          width: MediaQuery.of(context).size.width,
+                          child: Center(
+                            child: ClipRRect(
+                              borderRadius: BorderRadius.only(
+                                  bottomLeft: Radius.circular(20),
+                                  bottomRight: Radius.circular(20)),
+                              child: Image.asset(
+                                "assets/videoPhoto.jpg", // todo update as per login user
+                                fit: BoxFit.fill,
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                    );
+
                   else
                     return Container();
 
@@ -92,17 +119,6 @@ class _PostScreenState extends State<PostScreen> {
                       "${postData.content}",
                       style: TextStyle(color: Colors.black, fontSize: 18)),
                 ),
-         /*       Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
-                  child: Row(
-                    children: [
-                      Text("-- Author is : Person Name",
-                          style:
-                              TextStyle(color: Colors.grey[500], fontSize: 17)),
-                      Spacer(),
-                    ],
-                  ),
-                ),*/
               ],
             ),
           ),

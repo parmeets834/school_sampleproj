@@ -4,6 +4,8 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:provider/provider.dart';
+import 'package:school_sampleproj/providers/mediaViewers/youtube_provider.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
 class Youtube extends StatefulWidget {
@@ -13,22 +15,23 @@ class Youtube extends StatefulWidget {
 }
 
 class _YoutubeState extends State<Youtube> {
-  YoutubePlayerController _controller = YoutubePlayerController(
-    initialVideoId: 'iLnmTe5Q2Qw',
-    flags: YoutubePlayerFlags(
-      autoPlay: true,
-      mute: true,
-    ),
-  );
+
 
   @override
   Widget build(BuildContext context) {
-    return Container(child: Center(child: YoutubePlayer(
-      controller: _controller,
-      showVideoProgressIndicator: true,
-      onReady: () {
-    },
-    )),);
+  final provider=Provider.of<YoutubeProvider>(context);
+  provider.setVideoUrl(ModalRoute.of(context).settings.arguments);
+    return Consumer<YoutubeProvider>(
+      builder: (context, value,child) {
+        return Container(child: Center(child: YoutubePlayer(
+          controller: value.controller,
+          showVideoProgressIndicator: true,
+          onReady: () {
+            provider.controller.addListener(listener);
+        },
+        )),);
+      }
+    );
   }
 
   @override
@@ -38,5 +41,8 @@ class _YoutubeState extends State<Youtube> {
       DeviceOrientation.portraitUp,
       DeviceOrientation.portraitDown,
     ]);
+  }
+
+  void listener() {
   }
 }

@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:school_sampleproj/Screen/MediaViewers/ImageViewer.dart';
 import 'package:school_sampleproj/Screen/MediaViewers/pdf_view.dart';
+import 'package:school_sampleproj/Screen/MediaViewers/video_player.dart';
 import 'package:school_sampleproj/Screen/MediaViewers/youtube.dart';
 import 'package:school_sampleproj/global/constants.dart';
 import 'package:school_sampleproj/providers/gallery/gallery_providder.dart';
@@ -31,27 +32,38 @@ class _GalleryState extends State<Gallery> {
             title: "Mentors",
           )),
       body: Consumer<GalleryProvider>(
-        builder: (context,value,child) {
-          return Container(
-            child: ListView.builder(itemBuilder: (context,index){
-              return InkWell(
-                  onTap: (){
-                    if(value.galleryList[index].mediaType.toLowerCase()=="image"){
-                         Navigator.pushNamed(context, ImageViewer.classname,arguments: "${webResourceURL}/StudyMaterials/${value.galleryList[index].photoLocation}");
-                    }else if(value.galleryList[index].mediaType.toLowerCase()=="you tube link"){
-                      Navigator.pushNamed(context, Youtube.classname,arguments: "${value.galleryList[index].photoLocation}");
-                    }else if(value.galleryList[index].mediaType.toLowerCase()=="pdf"){
-                      Navigator.pushNamed(context, PdfView.classname,arguments: "${value.galleryList[index].photoLocation}");
-                    }
-
-
-
-                  },
-                  child: GalleryItem(model:value.galleryList[index]));
-            },itemCount: value.galleryList.length,
-            ),
-          );
-        }
+          builder: (context, value, child) {
+            return Container(
+              child: ListView.builder(itemBuilder: (context, index) {
+                return InkWell(
+                    onTap: () {
+                      if (value.galleryList[index].mediaType.toLowerCase() ==
+                          "image") {
+                        Navigator.pushNamed(context, ImageViewer.classname,
+                            arguments: "${webResourceURL}/StudyMaterials/${value
+                                .galleryList[index].photoLocation}");
+                      } else
+                      if (value.galleryList[index].mediaType.toLowerCase() ==
+                          "you tube link") {
+                        Navigator.pushNamed(context, Youtube.classname,
+                            arguments: "${webResourceURL}/StudyMaterials/${value
+                                .galleryList[index].photoLocation}");
+                      } else if (value.galleryList[index].mediaType
+                          .toLowerCase() == "pdf") {
+                        Navigator.pushNamed(context, PdfView.classname,
+                            arguments: "${webResourceURL}/StudyMaterials/${value
+                                .galleryList[index].photoLocation}");
+                      } else {
+                        Navigator.pushNamed(context, VideoPlayer.classname,
+                            arguments: "${webResourceURL}/StudyMaterials/${value
+                                .galleryList[index].photoLocation}");
+                      }
+                    },
+                    child: GalleryItem(model: value.galleryList[index]));
+              }, itemCount: value.galleryList.length,
+              ),
+            );
+          }
       ),
     );
   }

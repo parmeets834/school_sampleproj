@@ -13,6 +13,7 @@ import 'package:provider/provider.dart';
 import 'file:///D:/Practice%20folder/school_sampleproj/lib/providers/video_player.dart';
 import 'package:chewie/chewie.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:school_sampleproj/providers/mediaViewers/video_provider.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 import 'package:flutter/material.dart';
 import 'package:video_player/video_player.dart';
@@ -38,9 +39,18 @@ class _WebViewExampleState extends State<VideoPlayer> {
 
   @override
   Widget build(BuildContext context) {
-     return WebView(
-      initialUrl: 'http://techslides.com/demos/sample-videos/small.mp4',
-    );
+    final provider=Provider.of<VideoProvider>(context);
+   // provider.setMediaUrl(ModalRoute.of(context).settings.arguments);
+     return Consumer<VideoProvider>(
+
+       builder: (context, value,child) {
+         return Scaffold(
+           body: WebView(
+            initialUrl: ModalRoute.of(context).settings.arguments,
+    ),
+         );
+       }
+     );
   }
 
   @override

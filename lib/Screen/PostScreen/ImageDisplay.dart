@@ -24,7 +24,7 @@ class _ImageDisplayState extends State<ImageDisplay> {
 
     return Container(
         child: PhotoView(
-      imageProvider: NetworkImage(carrage.postModel.image),
+      imageProvider: NetworkImage(carrage.postModel.mediaUrl),
     ));
     ;
   }

@@ -11,12 +11,11 @@ import 'package:school_sampleproj/global/constants.dart';
 import 'package:school_sampleproj/model/task_model.dart';
 import 'package:school_sampleproj/utils/check_dio_error.dart';
 
-
 class TaskDataProvider extends ChangeNotifier {
   dynamic state = appstate.loading;
   GlobalKey<ScaffoldState> s_task_key;
   RefreshController refreshController =
-  RefreshController(initialRefresh: false);
+      RefreshController(initialRefresh: false);
   List<TaskModel> taskList;
 
   beforeLoad() {}
@@ -44,18 +43,29 @@ class TaskDataProvider extends ChangeNotifier {
     taskList = [];
     Response resp;
     try {
-       resp = await Api().getTaskList(currunt_user);
-    } on DioError catch(e){
+      resp = await Api().getTaskList(currunt_user);
+    } on DioError catch (e) {
       CheckDioError checkDioError = CheckDioError.check(e);
-      toast(s_task_key,checkDioError.message);
+      toast(s_task_key, checkDioError.message);
     }
     String refinestr = refineString(resp.data.toString());
     List<dynamic> ls = jsonDecode(refinestr);
     for (dynamic item in ls) {
-      taskList.add(TaskModel.fromJson(item));
+      addTaskItemWithMediaType(item);
     }
     state = appstate.laoding_complete;
     notifyListeners();
   }
 
+  addTaskItemWithMediaType(dynamic item) {
+   String resourceUrl= webResourceURL+"/Homework/";
+    TaskModel model = TaskModel.fromJson(item);
+    if (model.mediaType.toLowerCase() == "image") {
+
+      model.photoLocation =resourceUrl+ model.photoLocation + ".jpg";
+    } else if (model.mediaType.toLowerCase() == "video") {
+      model.photoLocation =resourceUrl+ model.photoLocation + ".mp4";
+    }
+    taskList.add(model);
+  }
 }

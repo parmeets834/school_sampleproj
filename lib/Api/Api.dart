@@ -240,4 +240,20 @@ class Api {
   }
 
 
+//-------------------------------------Time Table--------------------------------------------------
+  Future<Response> getTimeTabel(UserData data) async {
+    String ActivityDescStr = getUserActivityString(data.activeUserCode,
+        data.activeUserName,"Class Time Table",  "Student Apk.");
+    return await dio.post(
+      "",
+      data: {
+        "title": 'ClassTimeTable',
+        "description": ActivityDescStr,
+        "ReqAcastart": activeAcastart ,
+        "ReqClass": data.activeUserClass ,
+        "ReqSection": data.activeUserSection ,
+      },
+      options: Options(contentType: "application/x-www-form-urlencoded"),
+    );
+  }
 }

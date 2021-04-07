@@ -11,8 +11,11 @@ import 'package:school_sampleproj/Screen/Notification/notification_screen.dart';
 import 'package:school_sampleproj/Screen/PreLogin/pre_login.dart';
 import 'package:school_sampleproj/model.dart';
 import 'package:school_sampleproj/providers/gallery/gallery_providder.dart';
+import 'package:school_sampleproj/providers/mediaViewers/video_provider.dart';
+import 'package:school_sampleproj/providers/mediaViewers/youtube_provider.dart';
 import 'Screen/Gallery/gallery_screen.dart';
 import 'Screen/MediaViewers/video_player.dart';
+import 'Screen/TimeTable/time_table.dart';
 import 'file:///D:/Practice%20folder/school_sampleproj/lib/providers/video_player.dart';
 import 'package:school_sampleproj/providers/dash_board_provider.dart';
 import 'package:school_sampleproj/providers/mentor/mentor_list_provider.dart';
@@ -63,6 +66,8 @@ void main() async{
         ChangeNotifierProvider(create: (ctx) => NotificationProvider()),
         ChangeNotifierProvider(create: (ctx) => VideoPlayerProvider()),
         ChangeNotifierProvider(create: (ctx) => GalleryProvider()),
+        ChangeNotifierProvider(create: (ctx) => YoutubeProvider()),
+        ChangeNotifierProvider(create: (ctx) => VideoProvider()),
       ],
       child: MyApp(),
     ));
@@ -99,7 +104,8 @@ class MyApp extends StatelessWidget {
         VideoPlayer.classname:(context)=>VideoPlayer(),
         Gallery.classname:(context)=>Gallery(),
         Youtube.classname:(context)=>Youtube(),
-        PdfView.classname:(context)=>PdfView()
+        PdfView.classname:(context)=>PdfView(),
+        StudentTimeTablePage.classname:(context)=>StudentTimeTablePage()
       },
     );
   }

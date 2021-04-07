@@ -56,7 +56,7 @@ class _NotificationScreenState extends State<NotificationScreen> {
                     onTap:()=> Navigator.pushNamed(context, PostScreen.classname,
                         arguments: Carrage(
                             postModel: PostModel(title:value.notifications[index].hWDateStr2,content:value.notifications[index].hWRemarks,
-                            image: value.notifications[index].photoLocation,date: value.notifications[index].hWDateStr
+                            mediaUrl: value.notifications[index].photoLocation,date: value.notifications[index].hWDateStr
                             ))),
                     child: TaskItem(description: "${value.notifications[index].hWRemarks}",date:"Date: ${"${value.notifications[index].hWDateStr}"}",
                       subject: "${"${value.notifications[index].hWDateStr2}"}",imageurl:"${value.notifications[index].photoLocation}" ,),

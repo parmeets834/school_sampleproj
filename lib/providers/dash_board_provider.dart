@@ -5,8 +5,10 @@ import 'package:school_sampleproj/Screen/Gallery/gallery_screen.dart';
 import 'package:school_sampleproj/Screen/Mentor/mentor.dart';
 import 'package:school_sampleproj/Screen/Notification/notification_screen.dart';
 import 'package:school_sampleproj/Screen/Task/Task.dart';
+import 'package:school_sampleproj/Screen/TimeTable/time_table.dart';
 import 'package:school_sampleproj/model/Carrage.dart';
 import 'package:school_sampleproj/model/dashboard_items.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class DashBoardProvider extends ChangeNotifier{
 
@@ -45,7 +47,46 @@ List<DasBoardItem> items=[
 
       case 5: Navigator.pushNamed(context, Mentor.classname);
       break;
+      case 6: Navigator.pushNamed(context, StudentTimeTablePage.classname);
+      break;
 
+      case 10: _googleMeet();
+      break;
+      case 11: _launchZoom();
+        break;
+      case 12: _launchTeams();
+      break;
+
+    }
+
+  }
+
+  void _googleMeet() async{
+    final url = 'https://meet.google.com/hds-krig-iyv';
+    if (await canLaunch(url)) {
+    await launch(url);
+    } else {
+    throw 'Could not launch $url';
+    }
+
+  }
+
+void _launchZoom() async{
+  final url = 'https://zoom.us/j/5147914379?pwd=cVNuQWlxZkFXV1N6Y2k2OStNWEphQT09';
+  if (await canLaunch(url)) {
+    await launch(url);
+  } else {
+    throw 'Could not launch $url';
+  }
+
+}
+
+  void _launchTeams()async {
+    final url = 'https://teams.live.com/meet/95805842661305';
+    if (await canLaunch(url)) {
+    await launch(url);
+    } else {
+    throw 'Could not launch $url';
     }
 
   }
