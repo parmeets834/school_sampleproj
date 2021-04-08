@@ -85,7 +85,7 @@ class _StickyHeadersTableState extends State<StickyHeadersTable> {
             Container(
               width: widget.cellDimensions.stickyLegendWidth,
               height: widget.cellDimensions.stickyLegendHeight,
-              color:Colors.blueGrey ,
+              color:ThemeData().primaryColor,
               child: FittedBox(
                 fit: widget.cellFit,
                 child: widget.legendCell,
@@ -103,7 +103,7 @@ class _StickyHeadersTableState extends State<StickyHeadersTable> {
                           (i) => Container(
                         width: widget.cellDimensions.contentCellWidth,
                         height: widget.cellDimensions.stickyLegendHeight,
-                        color: Colors.blueGrey  ,
+                        color: ThemeData().primaryColor ,
 
                         child: FittedBox(
                           fit: widget.cellFit,
@@ -137,7 +137,7 @@ class _StickyHeadersTableState extends State<StickyHeadersTable> {
                           (i) => Container(
                         width: widget.cellDimensions.stickyLegendWidth,
                         height: widget.cellDimensions.contentCellHeight,
-                        color:Colors.blueGrey ,
+                        color:ThemeData().primaryColor ,
                         child: FittedBox(
                           fit: widget.cellFit,
                           child: widget.rowsTitleBuilder(i),
@@ -231,7 +231,7 @@ class CellDimensions {
     contentCellHeight: 50.0,
 
     stickyLegendWidth: 50.0,
-    stickyLegendHeight: 30.0,
+    stickyLegendHeight: 50.0,
   );
 }
 

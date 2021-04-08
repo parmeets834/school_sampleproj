@@ -46,7 +46,7 @@ class _GalleryState extends State<Gallery> {
                       if (value.galleryList[index].mediaType.toLowerCase() ==
                           "you tube link") {
                         Navigator.pushNamed(context, Youtube.classname,
-                            arguments: "${webResourceURL}/StudyMaterials/${value
+                            arguments: "${value
                                 .galleryList[index].photoLocation}");
                       } else if (value.galleryList[index].mediaType
                           .toLowerCase() == "pdf") {

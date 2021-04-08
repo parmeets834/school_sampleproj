@@ -15,6 +15,7 @@ import 'package:school_sampleproj/providers/mediaViewers/video_provider.dart';
 import 'package:school_sampleproj/providers/mediaViewers/youtube_provider.dart';
 import 'Screen/Gallery/gallery_screen.dart';
 import 'Screen/MediaViewers/video_player.dart';
+import 'Screen/MyMentors/my_mentor_list.dart';
 import 'Screen/TimeTable/time_table.dart';
 import 'file:///D:/Practice%20folder/school_sampleproj/lib/providers/video_player.dart';
 import 'package:school_sampleproj/providers/dash_board_provider.dart';
@@ -64,7 +65,6 @@ void main() async{
         ChangeNotifierProvider(create: (ctx) => SplashProvider()),
         ChangeNotifierProvider(create: (ctx) => PreLoginProvider()),
         ChangeNotifierProvider(create: (ctx) => NotificationProvider()),
-        ChangeNotifierProvider(create: (ctx) => VideoPlayerProvider()),
         ChangeNotifierProvider(create: (ctx) => GalleryProvider()),
         ChangeNotifierProvider(create: (ctx) => YoutubeProvider()),
         ChangeNotifierProvider(create: (ctx) => VideoProvider()),
@@ -105,7 +105,8 @@ class MyApp extends StatelessWidget {
         Gallery.classname:(context)=>Gallery(),
         Youtube.classname:(context)=>Youtube(),
         PdfView.classname:(context)=>PdfView(),
-        StudentTimeTablePage.classname:(context)=>StudentTimeTablePage()
+        StudentTimeTablePage.classname:(context)=>StudentTimeTablePage(),
+        MyMentorList.classname:(context)=>StudentTimeTablePage()
       },
     );
   }

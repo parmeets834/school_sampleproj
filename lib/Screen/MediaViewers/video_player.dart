@@ -8,10 +8,10 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_vlc_player/flutter_vlc_player.dart';
+
 import 'package:provider/provider.dart';
 import 'file:///D:/Practice%20folder/school_sampleproj/lib/providers/video_player.dart';
-import 'package:chewie/chewie.dart';
+
 import 'package:flutter/cupertino.dart';
 import 'package:school_sampleproj/providers/mediaViewers/video_provider.dart';
 import 'package:webview_flutter/webview_flutter.dart';

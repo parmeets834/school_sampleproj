@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:school_sampleproj/Screen/Mentor/mentor_request.dart';
 import 'package:school_sampleproj/Screen/Mentor/mentor_response.dart';
 import 'package:school_sampleproj/global/constants.dart';
 import 'package:school_sampleproj/model/Carrage.dart';
@@ -12,15 +13,15 @@ import 'package:school_sampleproj/widget/Cards/teacher_request_card.dart';
 
 import 'package:school_sampleproj/widget/app_bar/app_bar.dart';
 
-import 'mentor_request.dart';
 
-class MentorList extends StatefulWidget {
-  static const classname="/MentorList";
+
+class MyMentorList extends StatefulWidget {
+  static const classname="/MyMentorList";
   @override
-  _MentorListState createState() => _MentorListState();
+  _MyMentorListState createState() => _MyMentorListState();
 }
 
-class _MentorListState extends State<MentorList> {
+class _MyMentorListState extends State<MyMentorList> {
 
 
 
@@ -43,7 +44,6 @@ class _MentorListState extends State<MentorList> {
                     child: ListView.builder(
                       itemBuilder: (_, index) => InkWell(
                         child: InkWell(
-                          onTap:()=> Navigator.pushNamed(context, MentorRequest.classname,arguments: Carrage(teacherDetailModel:value.teacherList[index])),
                           child: TeacherCard(name: "${value.teacherList[index].empName}",color:value.colors[index],
                             subject: "${value.teacherList[index].subj}", ),
                         ),
