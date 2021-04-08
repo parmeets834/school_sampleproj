@@ -14,6 +14,7 @@ import 'package:school_sampleproj/providers/gallery/gallery_providder.dart';
 import 'package:school_sampleproj/providers/mediaViewers/video_provider.dart';
 import 'package:school_sampleproj/providers/mediaViewers/youtube_provider.dart';
 import 'Screen/Gallery/gallery_screen.dart';
+import 'Screen/MediaViewers/image_cropper.dart';
 import 'Screen/MediaViewers/video_player.dart';
 import 'Screen/MyMentors/my_mentor_list.dart';
 import 'Screen/TimeTable/time_table.dart';
@@ -106,7 +107,8 @@ class MyApp extends StatelessWidget {
         Youtube.classname:(context)=>Youtube(),
         PdfView.classname:(context)=>PdfView(),
         StudentTimeTablePage.classname:(context)=>StudentTimeTablePage(),
-        MyMentorList.classname:(context)=>StudentTimeTablePage()
+        MyMentorList.classname:(context)=>MyMentorList(),
+        ImageCropperScreen.classname:(context)=>ImageCropperScreen(),
       },
     );
   }

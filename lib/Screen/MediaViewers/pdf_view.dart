@@ -19,9 +19,11 @@ class _PdfViewState extends State<PdfView> {
   return Scaffold(
     appBar: AppBar(title: Text("PDF")),
     body: SfPdfViewer.network(
+
       ModalRoute.of(context).settings.arguments,
       key: _pdfViewerKey,
-    ),
+      //controller:controller, is ued to jump page
+     ),
   );
 
 
