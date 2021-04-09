@@ -13,11 +13,13 @@ import 'package:school_sampleproj/model.dart';
 import 'package:school_sampleproj/providers/gallery/gallery_providder.dart';
 import 'package:school_sampleproj/providers/mediaViewers/video_provider.dart';
 import 'package:school_sampleproj/providers/mediaViewers/youtube_provider.dart';
+import 'package:school_sampleproj/providers/profile/profile_provider.dart';
 import 'Screen/Gallery/gallery_screen.dart';
 import 'Screen/MediaViewers/image_cropper.dart';
 import 'Screen/MediaViewers/video_player.dart';
 import 'Screen/MyMentors/my_mentor_list.dart';
 import 'Screen/TimeTable/time_table.dart';
+import 'Screen/profile/profile.dart';
 import 'file:///D:/Practice%20folder/school_sampleproj/lib/providers/video_player.dart';
 import 'package:school_sampleproj/providers/dash_board_provider.dart';
 import 'package:school_sampleproj/providers/mentor/mentor_list_provider.dart';
@@ -69,6 +71,7 @@ void main() async{
         ChangeNotifierProvider(create: (ctx) => GalleryProvider()),
         ChangeNotifierProvider(create: (ctx) => YoutubeProvider()),
         ChangeNotifierProvider(create: (ctx) => VideoProvider()),
+        ChangeNotifierProvider(create: (ctx) => ProfileProvider()),
       ],
       child: MyApp(),
     ));
@@ -109,6 +112,8 @@ class MyApp extends StatelessWidget {
         StudentTimeTablePage.classname:(context)=>StudentTimeTablePage(),
         MyMentorList.classname:(context)=>MyMentorList(),
         ImageCropperScreen.classname:(context)=>ImageCropperScreen(),
+        Profile.classname:(context)=>Profile(),
+
       },
     );
   }

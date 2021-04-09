@@ -6,6 +6,7 @@ import 'package:school_sampleproj/Screen/MyMentors/my_mentor_list.dart';
 import 'package:school_sampleproj/Screen/Notification/notification_screen.dart';
 import 'package:school_sampleproj/Screen/Task/Task.dart';
 import 'package:school_sampleproj/Screen/TimeTable/time_table.dart';
+import 'package:school_sampleproj/Screen/profile/profile.dart';
 import 'package:school_sampleproj/model/Carrage.dart';
 import 'package:school_sampleproj/model/dashboard_items.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -16,7 +17,7 @@ class DashBoardProvider extends ChangeNotifier {
     DasBoardItem(image: 'assets/checklist.svg', title: 'My Task'),
     DasBoardItem(image: 'assets/gallery.svg', title: 'Gallery'),
     DasBoardItem(image: 'assets/online-lession.svg', title: 'My Mentors'),
-    DasBoardItem(image: 'assets/calender.svg', title: 'Time Table'),
+    DasBoardItem(image: 'assets/calendar2.svg', title: 'Time Table'),
     DasBoardItem(image: 'assets/chat.svg', title: 'Ask My Mentor'), //6
     DasBoardItem(image: 'assets/id-card2.svg', title: 'This is Me'),
     DasBoardItem(image: 'assets/graph.svg', title: 'My performance'),
@@ -53,13 +54,15 @@ class DashBoardProvider extends ChangeNotifier {
       case 4:
         Navigator.pushNamed(context, StudentTimeTablePage.classname);
         break;
-      case 6:
-        Navigator.pushNamed(context, ImageCropperScreen.classname);
-        break;
 
+    /*  case 6:
+        Navigator.pushNamed(context, ImageCropperScreen.classname);
+        break;*/
+      case 6:
+        Navigator.pushNamed(context, Profile.classname);
+        break;
       case 10:
         _googleMeet();
-
         break;
       case 11:
         _launchZoom();
