@@ -157,7 +157,7 @@ Future fetchPost() async {
   ];
   _titleColumn = ["1", "2", "3", "4", "5", "6", "7"];
 
-  Response rep = await Api().getTimeTabel(currunt_user);
+  Response rep = await StudentApi().getTimeTabel(currunt_user);
   String Respstring = rep.data.toString();
 
   Respstring = Respstring.substring(0, Respstring.indexOf("||JasonEnd", 0));

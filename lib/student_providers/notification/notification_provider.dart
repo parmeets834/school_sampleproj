@@ -43,7 +43,7 @@ class NotificationProvider extends ChangeNotifier {
     }
     notifications=[];
     state=appstate.loading;// prevent recalls
-    Response resp = await Api().getNotifications(currunt_user);
+    Response resp = await StudentApi().getNotifications(currunt_user);
     print("Here1");
     String Respstring = resp.data.toString();
     print(Respstring);

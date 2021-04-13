@@ -18,7 +18,7 @@ TextEditingController message=new TextEditingController();
 
   void sendData() async{
     try{
-      await Api().sentMentorRequest(currunt_user, carrage,message.text);
+      await StudentApi().sentMentorRequest(currunt_user, carrage,message.text);
       DialogUtil(context: context,message: "Successful uploaded",title: "Request Added").showSuccessDialog();
 
 

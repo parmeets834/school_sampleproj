@@ -9,12 +9,12 @@ import 'package:flutter/material.dart';
 import 'package:school_sampleproj/Api/Api.dart';
 import 'package:school_sampleproj/global/constant_function.dart';
 import 'package:school_sampleproj/global/constants.dart';
-import 'package:school_sampleproj/model/teacher_detail_model.dart';
+import 'package:school_sampleproj/model/mentors_detail_model.dart';
 import 'dart:math';
 
 class MentorListProvider extends ChangeNotifier {
   dynamic state = appstate.defaultstate;
-  List<TeacherDetailModel> teacherList;
+  List<MentorDetailModel> teacherList;
   int lastpos = -1;
   Random random = new Random();
   List<Color> colors;
@@ -24,7 +24,7 @@ class MentorListProvider extends ChangeNotifier {
 
     teacherList = [];
     colors = [];
-    Response response = await Api().getMentorList(currunt_user);
+    Response response = await StudentApi().getMentorList(currunt_user);
 
     String str = refineString(response.data.toString());
 
@@ -32,7 +32,7 @@ class MentorListProvider extends ChangeNotifier {
 
     for (dynamic item in ls) {
       colors.add(getContentColor());
-      teacherList.add(TeacherDetailModel.fromJson(item));
+      teacherList.add(MentorDetailModel.fromJson(item));
     }
     state = appstate.laoding_complete;
     notifyListeners();

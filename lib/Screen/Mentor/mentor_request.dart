@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:school_sampleproj/global/constants.dart';
-import 'package:school_sampleproj/providers/mentor/mentor_request.dart';
+import 'package:school_sampleproj/student_providers/mentor/mentor_request.dart';
 import 'package:school_sampleproj/widget/Cards/person_detail_card.dart';
 import 'package:school_sampleproj/widget/app_bar/app_bar.dart';
 import 'package:school_sampleproj/widget/button/gradient_button.dart';

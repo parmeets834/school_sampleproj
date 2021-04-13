@@ -9,7 +9,7 @@ import 'package:school_sampleproj/utils/database.dart';
 
 class PreLoginProvider extends ChangeNotifier{
 
-  List<UserData> loggedUserList;
+  List<StudentDataModel> loggedUserList;
   dynamic state=appstate.defaultstate;
 
   loadLoginUsers() async{
@@ -18,7 +18,7 @@ class PreLoginProvider extends ChangeNotifier{
    for(dynamic item in ls){
      String str=item["userdata"];
      print("data is here ${str}");
-     loggedUserList.add(UserData.fromRawJson(str));
+     loggedUserList.add(StudentDataModel.fromRawJson(str));
 
 
    }

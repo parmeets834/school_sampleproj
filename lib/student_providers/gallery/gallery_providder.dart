@@ -18,7 +18,7 @@ class GalleryProvider extends ChangeNotifier {
   void loadData() async{
     galleryList=[];
 
-    Response resp = await Api().getGalleryContent(currunt_user);
+    Response resp = await StudentApi().getGalleryContent(currunt_user);
        String str=refineString(resp.data);
     List<dynamic> ls=  jsonDecode(str);
 

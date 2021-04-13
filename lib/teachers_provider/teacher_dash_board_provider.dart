@@ -11,7 +11,7 @@ import 'package:school_sampleproj/model/Carrage.dart';
 import 'package:school_sampleproj/model/dashboard_items.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-class DashBoardProvider extends ChangeNotifier {
+class TeacherDashBoardProvider extends ChangeNotifier {
   List<DasBoardItem> items = [
     DasBoardItem(image: 'assets/notification.svg', title: 'Notification'),
     DasBoardItem(image: 'assets/checklist.svg', title: 'My Task'),
@@ -55,7 +55,7 @@ class DashBoardProvider extends ChangeNotifier {
         Navigator.pushNamed(context, StudentTimeTablePage.classname);
         break;
 
-    /*  case 6:
+      /*  case 6:
         Navigator.pushNamed(context, ImageCropperScreen.classname);
         break;*/
       case 6:

@@ -15,7 +15,7 @@ class MentorProvider extends ChangeNotifier {
   loadData() async {
   state=appstate.loading;
   notifyListeners();
-    Response resp = await Api().getParentRequest(currunt_user);
+    Response resp = await StudentApi().getParentRequest(currunt_user);
     String str = refineString(resp.data);
     List<dynamic> ls = jsonDecode(str);
   mentorRequestList=[];

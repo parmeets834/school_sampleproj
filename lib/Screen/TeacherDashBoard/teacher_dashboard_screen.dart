@@ -1,23 +1,28 @@
 
+/*
+ * Copyright by Aphelia Innovation,This whole code is developed  and managed and redeveloped by parmeet singh,with authority of Aphelia.
+ */
+
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:school_sampleproj/global/constants.dart';
 import 'package:school_sampleproj/model/Student.dart';
 import 'package:school_sampleproj/student_providers/dash_board_provider.dart';
+import 'package:school_sampleproj/teachers_provider/teacher_dash_board_provider.dart';
 
 import 'package:school_sampleproj/widget/Cards/dashboard_card.dart';
 import 'package:school_sampleproj/widget/other/responsive_ui.dart';
 import '../../global/constant_function.dart';
 
-class StudentDashBoard extends StatefulWidget {
-  static const classname="/StudentDashBoard";
+class TeachersDashBoard extends StatefulWidget {
+  static const classname="/TeachersDashBoard";
   @override
-  _StudentDashBoardState createState() => _StudentDashBoardState();
+  _TeachersDashBoardState createState() => _TeachersDashBoardState();
 }
 
 
 
-class _StudentDashBoardState extends State<StudentDashBoard> with RouteAware {
+class _TeachersDashBoardState extends State<TeachersDashBoard> with RouteAware {
 
 
 
@@ -34,7 +39,7 @@ class _StudentDashBoardState extends State<StudentDashBoard> with RouteAware {
 
   @override
   void initState() {
-    final provider=Provider.of<DashBoardProvider>(context,listen: false);
+    final provider=Provider.of<TeacherDashBoardProvider>(context,listen: false);
 
 
   }
@@ -47,12 +52,12 @@ class _StudentDashBoardState extends State<StudentDashBoard> with RouteAware {
     _large = ResponsiveWidget.isScreenLarge(_width, _pixelRatio);
     _medium = ResponsiveWidget.isScreenMedium(_width, _pixelRatio);
     double screenWidth = MediaQuery.of(context).size.width;
-     final provider=Provider.of<DashBoardProvider>(context);
+     final provider=Provider.of<TeacherDashBoardProvider>(context);
      provider.context=context;
-    provider.carrage=ModalRoute.of(context).settings.arguments;
+/*    provider.carrage=ModalRoute.of(context).settings.arguments;
     currunt_user=provider.carrage.userData;
     setConfigurationAsPerUser(currunt_user);
-    seturls();
+    seturls();*/
     return Scaffold(
       appBar: AppBar(leading: Icon(Icons.list),
         title: Text("Login to Cloud Campus"),
@@ -89,9 +94,9 @@ class _StudentDashBoardState extends State<StudentDashBoard> with RouteAware {
                           children: [
 
                             Text("St Marry Public School",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 14),),
-                            Text("Student:${provider.carrage.userData.activeUserName}",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 14),),
-                            Text("Class : ${provider.carrage.userData.activeUserClass}",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 14),),
-                            Text("DashBoard: Parent",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 14),),
+                            Text("Student: SDSDS",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 14),),
+                            Text("Class : X11",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 14),),
+                            Text("DashBoard: Teacher",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 14),),
 
                           ],),
                       ),

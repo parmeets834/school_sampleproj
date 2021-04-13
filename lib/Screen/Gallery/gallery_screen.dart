@@ -9,7 +9,7 @@ import 'package:school_sampleproj/Screen/MediaViewers/pdf_view.dart';
 import 'package:school_sampleproj/Screen/MediaViewers/video_player.dart';
 import 'package:school_sampleproj/Screen/MediaViewers/youtube.dart';
 import 'package:school_sampleproj/global/constants.dart';
-import 'package:school_sampleproj/providers/gallery/gallery_providder.dart';
+import 'package:school_sampleproj/student_providers/gallery/gallery_providder.dart';
 import 'package:school_sampleproj/widget/Cards/gallery_item.dart';
 import 'package:school_sampleproj/widget/app_bar/app_bar.dart';
 

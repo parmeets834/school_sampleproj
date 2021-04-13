@@ -5,7 +5,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:provider/provider.dart';
 import 'package:school_sampleproj/Api/Api.dart';
 import 'package:school_sampleproj/global/constants.dart';
-import 'package:school_sampleproj/providers/otp_provider.dart';
+import 'package:school_sampleproj/student_providers/otp_provider.dart';
 import 'package:school_sampleproj/utils/database.dart';
 import 'package:school_sampleproj/widget/other/allWidget.dart';
 import 'package:school_sampleproj/widget/other/custom_shape.dart';

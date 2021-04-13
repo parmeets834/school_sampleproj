@@ -43,7 +43,7 @@ class TaskDataProvider extends ChangeNotifier {
     taskList = [];
     Response resp;
     try {
-      resp = await Api().getTaskList(currunt_user);
+      resp = await StudentApi().getTaskList(currunt_user);
     } on DioError catch (e) {
       CheckDioError checkDioError = CheckDioError.check(e);
       toast(s_task_key, checkDioError.message);

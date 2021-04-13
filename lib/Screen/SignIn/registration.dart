@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:provider/provider.dart';
 import 'package:school_sampleproj/global/constants.dart';
-import 'package:school_sampleproj/providers/registration.dart';
+import 'package:school_sampleproj/student_providers/registration.dart';
 import 'package:school_sampleproj/widget/other/allWidget.dart';
 import 'package:school_sampleproj/widget/other/custom_shape.dart';
 import 'package:school_sampleproj/widget/other/customappbar.dart';

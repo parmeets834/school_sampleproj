@@ -9,8 +9,8 @@ import 'dart:convert';
 
 import 'dart:convert';
 
-class UserData {
-  UserData({
+class StudentDataModel {
+  StudentDataModel({
     this.activeClientCode,
     this.loginStatus,
     this.loginMsg,
@@ -52,11 +52,11 @@ class UserData {
   String activeUserClid;
   String activeUserImage;
 
-  factory UserData.fromRawJson(String str) => UserData.fromJson(json.decode(str));
+  factory StudentDataModel.fromRawJson(String str) => StudentDataModel.fromJson(json.decode(str));
 
   String toRawJson() => json.encode(toJson());
 
-  factory UserData.fromJson(Map<String, dynamic> json) => UserData(
+  factory StudentDataModel.fromJson(Map<String, dynamic> json) => StudentDataModel(
     activeClientCode: json["activeClientCode"],
     loginStatus: json["loginStatus"],
     loginMsg: json["loginMsg"],

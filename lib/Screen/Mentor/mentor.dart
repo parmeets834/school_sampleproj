@@ -8,7 +8,7 @@ import 'package:school_sampleproj/Screen/PostScreen/PostScren.dart';
 import 'package:school_sampleproj/global/constant_function.dart';
 import 'package:school_sampleproj/global/constants.dart';
 import 'package:school_sampleproj/model/Carrage.dart';
-import 'package:school_sampleproj/providers/mentor/mentor_provider.dart';
+import 'package:school_sampleproj/student_providers/mentor/mentor_provider.dart';
 import 'package:school_sampleproj/widget/Cards/add_card.dart';
 import 'package:school_sampleproj/widget/Cards/task_item.dart';
 import 'package:school_sampleproj/widget/Cards/teacher_request_card.dart';

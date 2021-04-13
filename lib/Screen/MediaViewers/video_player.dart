@@ -10,10 +10,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 import 'package:provider/provider.dart';
-import 'file:///D:/Practice%20folder/school_sampleproj/lib/providers/video_player.dart';
+import 'file:///D:/Practice%20folder/school_sampleproj/lib/student_providers/video_player.dart';
 
 import 'package:flutter/cupertino.dart';
-import 'package:school_sampleproj/providers/mediaViewers/video_provider.dart';
+import 'package:school_sampleproj/student_providers/mediaViewers/video_provider.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 import 'package:flutter/material.dart';
 import 'package:video_player/video_player.dart';

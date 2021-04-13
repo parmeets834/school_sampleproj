@@ -12,7 +12,7 @@ const demo_image_url="https://bitsofco.de/content/images/2018/12/broken-1.png";
 // colors
 const main_color = Color(0xFF66dbfd);
 const color_grid = [Color(0xFF66dbfd), Color(0xFF058aed)];
-
+const color_dark_theme=Color(0xFF1f9ef1);
 // state management
 
  enum appstate {
@@ -25,8 +25,8 @@ const color_grid = [Color(0xFF66dbfd), Color(0xFF058aed)];
 
 
 // objects
- UserData currunt_user;
- UserData otp_user;
+ StudentDataModel currunt_user;
+ StudentDataModel otp_user;
 
 
 //-----------------------------------outside parameter given by client----------------------------------------------------------------

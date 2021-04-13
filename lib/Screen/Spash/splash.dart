@@ -8,7 +8,7 @@ import 'package:school_sampleproj/Api/Api.dart';
 import 'package:school_sampleproj/Screen/PreLogin/pre_login.dart';
 import 'package:school_sampleproj/global/constant_function.dart';
 import 'package:school_sampleproj/global/constants.dart';
-import 'package:school_sampleproj/providers/splash/splash_provider.dart';
+import 'package:school_sampleproj/student_providers/splash/splash_provider.dart';
 
 class SplashScreen extends StatefulWidget {
   static const classname = "/SplashScreen";

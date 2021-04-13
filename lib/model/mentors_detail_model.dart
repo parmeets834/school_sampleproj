@@ -7,8 +7,8 @@
 
 import 'dart:convert';
 
-class TeacherDetailModel {
-  TeacherDetailModel({
+class MentorDetailModel {
+  MentorDetailModel({
     this.actionType,
     this.cnd,
     this.empName,
@@ -42,11 +42,11 @@ class TeacherDetailModel {
   String tSection;
   String prfx;
 
-  factory TeacherDetailModel.fromRawJson(String str) => TeacherDetailModel.fromJson(json.decode(str));
+  factory MentorDetailModel.fromRawJson(String str) => MentorDetailModel.fromJson(json.decode(str));
 
   String toRawJson() => json.encode(toJson());
 
-  factory TeacherDetailModel.fromJson(Map<String, dynamic> json) => TeacherDetailModel(
+  factory MentorDetailModel.fromJson(Map<String, dynamic> json) => MentorDetailModel(
     actionType: json["ActionType"],
     cnd: json["Cnd"],
     empName: json["EmpName"],

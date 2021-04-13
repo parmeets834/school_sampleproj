@@ -3,7 +3,9 @@ import 'package:intl/intl.dart';
 
 import 'package:provider/provider.dart';
 import 'package:school_sampleproj/Screen/MediaViewers/ImageViewer.dart';
+import 'package:school_sampleproj/Screen/MediaViewers/pdf_view.dart';
 import 'package:school_sampleproj/Screen/MediaViewers/video_player.dart';
+import 'package:school_sampleproj/Screen/MediaViewers/youtube.dart';
 import 'package:school_sampleproj/global/constants.dart';
 import 'package:school_sampleproj/model/Carrage.dart';
 import 'package:school_sampleproj/model/post_model.dart';
@@ -69,26 +71,83 @@ class _HomeWorkScreenState extends State<HomeWorkScreen> {
                       onTap: (){
                         Navigator.pushNamed(context,VideoPlayer.classname,arguments: carrage.postModel.mediaUrl);
                       },
-                      child: ConstrainedBox(
-                        constraints: new BoxConstraints(
-                          maxHeight: 250,
-                        ),
-                        child: Container(
-                          width: MediaQuery.of(context).size.width,
-                          child: Center(
-                            child: ClipRRect(
-                              borderRadius: BorderRadius.only(
-                                  bottomLeft: Radius.circular(20),
-                                  bottomRight: Radius.circular(20)),
-                              child: Image.asset(
-                                "assets/videoPhoto.jpg", // todo update as per login user
-                                fit: BoxFit.fill,
+                      child: AbsorbPointer(
+                        child: ConstrainedBox(
+                          constraints: new BoxConstraints(
+                            maxHeight: 250,
+                          ),
+                          child: Container(
+                            width: MediaQuery.of(context).size.width,
+                            child: Center(
+                              child: ClipRRect(
+                                borderRadius: BorderRadius.only(
+                                    bottomLeft: Radius.circular(20),
+                                    bottomRight: Radius.circular(20)),
+                                child: Image.asset(
+                                  "assets/video_player.jpg", // todo update as per login user
+                                  fit: BoxFit.fill,
+                                ),
                               ),
                             ),
                           ),
                         ),
                       ),
                     );
+                  if(postData.mediaUrl!=null && postData.mediaType.toLowerCase()=="you tube link" )
+                    return InkWell(
+                      onTap: (){
+                        Navigator.pushNamed(context,Youtube.classname,arguments: carrage.postModel.mediaUrl);
+                      },
+                      child: AbsorbPointer(
+                        child: ConstrainedBox(
+                          constraints: new BoxConstraints(
+                            maxHeight: 250,
+                          ),
+                          child: Container(
+                            width: MediaQuery.of(context).size.width,
+                            child: Center(
+                              child: ClipRRect(
+                                borderRadius: BorderRadius.only(
+                                    bottomLeft: Radius.circular(20),
+                                    bottomRight: Radius.circular(20)),
+                                child: Image.asset(
+                                  "assets/video_player.jpg", // todo update as per login user
+                                  fit: BoxFit.fill,
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                    );
+                  if(postData.mediaUrl!=null && postData.mediaType.toLowerCase()== "pdf" )
+                    return InkWell(
+                      onTap: (){
+                        Navigator.pushNamed(context,PdfView.classname,arguments: carrage.postModel.mediaUrl);
+                      },
+                      child: AbsorbPointer(
+                        child: ConstrainedBox(
+                          constraints: new BoxConstraints(
+                            maxHeight: 250,
+                          ),
+                          child: Container(
+                            width: MediaQuery.of(context).size.width,
+                            child: Center(
+                              child: ClipRRect(
+                                borderRadius: BorderRadius.only(
+                                    bottomLeft: Radius.circular(20),
+                                    bottomRight: Radius.circular(20)),
+                                child: Image.asset(
+                                  "assets/pdf.jpeg", // todo update as per login user
+                                  fit: BoxFit.fill,
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                    );
+
 
                   else
                     return Container();
@@ -103,7 +162,7 @@ class _HomeWorkScreenState extends State<HomeWorkScreen> {
                   padding: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
                   child: Row(
                     children: [
-                      Text("English Hons",
+                      Text("English Hons task",
                           style:
                               TextStyle(color: Colors.grey[500], fontSize: 17)),
                       Spacer(),

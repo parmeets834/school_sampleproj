@@ -6,7 +6,7 @@ import 'package:school_sampleproj/global/constant_function.dart';
 import 'package:school_sampleproj/global/constants.dart';
 import 'package:school_sampleproj/model/Carrage.dart';
 import 'package:school_sampleproj/model/post_model.dart';
-import 'package:school_sampleproj/providers/notification/notification_provider.dart';
+import 'package:school_sampleproj/student_providers/notification/notification_provider.dart';
 import 'package:school_sampleproj/widget/Cards/task_item.dart';
 import 'package:school_sampleproj/widget/Cards/task_item_shimmer.dart';
 import 'package:school_sampleproj/widget/ShimmerContainer.dart';

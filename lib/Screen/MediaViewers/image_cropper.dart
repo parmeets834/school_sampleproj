@@ -12,7 +12,12 @@ import 'dart:io';
 import 'package:image_picker/image_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:path_provider/path_provider.dart';
+import 'package:provider/provider.dart';
+import 'package:school_sampleproj/student_providers/profile/profile_provider.dart';
+import 'dart:io';
 
+import 'package:school_sampleproj/utils/file_manager.dart';
 
 
 class ImageCropperScreen extends StatefulWidget {
@@ -135,8 +140,19 @@ class _ImageCropperScreenState extends State<ImageCropperScreen> {
     _lastCropped?.delete();
     _lastCropped = file;
     debugPrint('File is here ');
+/*
+    final File newImage = await file.copy('$path/user.png');*/
     debugPrint('$file');
+
+    final profileScreenProvider=Provider.of<ProfileProvider>(context,listen: false);
+    await  profileScreenProvider.writeFileDisk(file);
+    Navigator.pop(context);
+
   }
+
+
+
+
 }
 
 

@@ -9,26 +9,30 @@ import 'package:school_sampleproj/Screen/MediaViewers/pdf_view.dart';
 import 'package:school_sampleproj/Screen/MediaViewers/youtube.dart';
 import 'package:school_sampleproj/Screen/Notification/notification_screen.dart';
 import 'package:school_sampleproj/Screen/PreLogin/pre_login.dart';
+import 'package:school_sampleproj/Screen/TeacherDashBoard/teacher_dashboard_screen.dart';
 import 'package:school_sampleproj/model.dart';
-import 'package:school_sampleproj/providers/gallery/gallery_providder.dart';
-import 'package:school_sampleproj/providers/mediaViewers/video_provider.dart';
-import 'package:school_sampleproj/providers/mediaViewers/youtube_provider.dart';
-import 'package:school_sampleproj/providers/profile/profile_provider.dart';
+import 'package:school_sampleproj/student_providers/gallery/gallery_providder.dart';
+import 'package:school_sampleproj/student_providers/mediaViewers/video_provider.dart';
+import 'package:school_sampleproj/student_providers/mediaViewers/youtube_provider.dart';
+import 'package:school_sampleproj/student_providers/mentor/mentor_request.dart';
+import 'package:school_sampleproj/student_providers/profile/profile_provider.dart';
+import 'package:school_sampleproj/student_providers/task/task_provider.dart';
 import 'Screen/Gallery/gallery_screen.dart';
+import 'Screen/HomeWorkDisplayScreen/home_work_screen.dart';
 import 'Screen/MediaViewers/image_cropper.dart';
 import 'Screen/MediaViewers/video_player.dart';
 import 'Screen/MyMentors/my_mentor_list.dart';
 import 'Screen/TimeTable/time_table.dart';
 import 'Screen/profile/profile.dart';
-import 'file:///D:/Practice%20folder/school_sampleproj/lib/providers/video_player.dart';
-import 'package:school_sampleproj/providers/dash_board_provider.dart';
-import 'package:school_sampleproj/providers/mentor/mentor_list_provider.dart';
-import 'package:school_sampleproj/providers/mentor/mentor_provider.dart';
-import 'package:school_sampleproj/providers/mentor/mentor_response.dart';
-import 'package:school_sampleproj/providers/notification/notification_provider.dart';
-import 'package:school_sampleproj/providers/pre_login/pre_login_provider.dart';
-import 'package:school_sampleproj/providers/registration.dart';
-import 'package:school_sampleproj/providers/splash/splash_provider.dart';
+import 'file:///D:/Practice%20folder/school_sampleproj/lib/student_providers/video_player.dart';
+import 'package:school_sampleproj/student_providers/dash_board_provider.dart';
+import 'package:school_sampleproj/student_providers/mentor/mentor_list_provider.dart';
+import 'package:school_sampleproj/student_providers/mentor/mentor_provider.dart';
+import 'package:school_sampleproj/student_providers/mentor/mentor_response.dart';
+import 'package:school_sampleproj/student_providers/notification/notification_provider.dart';
+import 'package:school_sampleproj/student_providers/pre_login/pre_login_provider.dart';
+import 'package:school_sampleproj/student_providers/registration.dart';
+import 'package:school_sampleproj/student_providers/splash/splash_provider.dart';
 import 'package:school_sampleproj/utils/database.dart';
 import 'Screen/Mentor/mentor.dart';
 import 'Screen/Mentor/mentor_list.dart';
@@ -37,14 +41,15 @@ import 'Screen/Mentor/mentor_response.dart';
 import 'Screen/PostScreen/ImageDisplay.dart';
 import 'Screen/SignIn/registration.dart';
 
-import 'package:school_sampleproj/providers/otp_provider.dart';
+import 'package:school_sampleproj/student_providers/otp_provider.dart';
 
 import 'Screen/OtpScreen/otp_screen.dart';
 import 'Screen/PostScreen/PostScren.dart';
 import 'Screen/Task/Task.dart';
-import 'providers/mentor/mentor_request.dart';
+
 import 'Screen/Spash/splash.dart';
-import 'providers/task/task_provider.dart';
+import 'teachers_provider/teacher_dash_board_provider.dart';
+
 
 void main() async{
   WidgetsFlutterBinding.ensureInitialized();
@@ -57,9 +62,9 @@ void main() async{
       .then((_) {
     runApp(MultiProvider(
       providers: [
+        ChangeNotifierProvider(create: (ctx) => DashBoardProvider()),
         ChangeNotifierProvider(create: (ctx) => RegistrationProvider()),
         ChangeNotifierProvider(create: (ctx) => OtpProvider()),
-        ChangeNotifierProvider(create: (ctx) => DashBoardProvider(),),
         ChangeNotifierProvider(create: (ctx) => TaskDataProvider()),
         ChangeNotifierProvider(create: (ctx) => MentorProvider()),
         ChangeNotifierProvider(create: (ctx) => MentorListProvider()),
@@ -72,6 +77,8 @@ void main() async{
         ChangeNotifierProvider(create: (ctx) => YoutubeProvider()),
         ChangeNotifierProvider(create: (ctx) => VideoProvider()),
         ChangeNotifierProvider(create: (ctx) => ProfileProvider()),
+        /* Teachers providers*/
+        ChangeNotifierProvider(create: (ctx) => TeacherDashBoardProvider()),
       ],
       child: MyApp(),
     ));
@@ -94,7 +101,7 @@ class MyApp extends StatelessWidget {
         '/': (context) => SplashScreen(),
         SignUpScreen.classname: (context) => SignUpScreen(),
         OtpScreen.classname: (context) => OtpScreen(),
-        DashBoard.classname: (context) => DashBoard(),
+        StudentDashBoard.classname: (context) => StudentDashBoard(),
         PostScreen.classname: (context) => PostScreen(),
         Task.classname: (context) => Task(),
         Mentor.classname:(context)=> Mentor(),
@@ -113,6 +120,9 @@ class MyApp extends StatelessWidget {
         MyMentorList.classname:(context)=>MyMentorList(),
         ImageCropperScreen.classname:(context)=>ImageCropperScreen(),
         Profile.classname:(context)=>Profile(),
+        HomeWorkScreen.classname:(context)=>HomeWorkScreen(),
+        TeachersDashBoard.classname:(context)=>TeachersDashBoard()
+
 
       },
     );

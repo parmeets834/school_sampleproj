@@ -5,7 +5,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
-import 'package:school_sampleproj/providers/mediaViewers/youtube_provider.dart';
+import 'package:school_sampleproj/student_providers/mediaViewers/youtube_provider.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
 class Youtube extends StatefulWidget {

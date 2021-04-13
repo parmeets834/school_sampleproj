@@ -57,7 +57,7 @@ class DatabaseUtil {
   }
   /*Insert Data */
 
-insertData(UserData userData)async{
+insertData(StudentDataModel userData)async{
   await _openDb();
   await database.transaction((txn) async {
     int id1 = await txn.rawInsert(

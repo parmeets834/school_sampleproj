@@ -42,7 +42,7 @@ checkButtonEnable() {
 
 
 // set User
-void setConfigurationAsPerUser( UserData userdata){
+void setConfigurationAsPerUser( StudentDataModel userdata){
   activeClientCode=userdata.activeClientCode;
 
 }

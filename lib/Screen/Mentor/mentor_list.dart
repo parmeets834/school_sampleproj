@@ -5,7 +5,7 @@ import 'package:provider/provider.dart';
 import 'package:school_sampleproj/Screen/Mentor/mentor_response.dart';
 import 'package:school_sampleproj/global/constants.dart';
 import 'package:school_sampleproj/model/Carrage.dart';
-import 'package:school_sampleproj/providers/mentor/mentor_list_provider.dart';
+import 'package:school_sampleproj/student_providers/mentor/mentor_list_provider.dart';
 import 'package:school_sampleproj/widget/Cards/person_detail_card.dart';
 import 'package:school_sampleproj/widget/Cards/teacher_card.dart';
 import 'package:school_sampleproj/widget/Cards/teacher_request_card.dart';

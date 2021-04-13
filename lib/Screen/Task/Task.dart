@@ -7,7 +7,7 @@ import 'package:school_sampleproj/global/constant_function.dart';
 import 'package:school_sampleproj/global/constants.dart';
 import 'package:school_sampleproj/model/Carrage.dart';
 import 'package:school_sampleproj/model/post_model.dart';
-import 'package:school_sampleproj/providers/task/task_provider.dart';
+import 'package:school_sampleproj/student_providers/task/task_provider.dart';
 
 import 'package:school_sampleproj/widget/Cards/task_item.dart';
 import 'package:school_sampleproj/widget/Cards/task_item_shimmer.dart';
@@ -59,6 +59,7 @@ class _TaskState extends State<Task> {
                         arguments: Carrage(postModel: PostModel(
                             mediaUrl:value.taskList[index].photoLocation ,
                             date:value.taskList[index].hwDateStr,
+                            mediaType:value.taskList[index].mediaType,
                             content: value.taskList[index].hwRemarks,title: value.taskList[index].hwRemarks))),
                     child: TaskItem(description: "${value.taskList[index].hwRemarks} ",date:"Date:${value.taskList[index].hwDateStr}",
                       subject: "${value.taskList[index].hwSubject}"),

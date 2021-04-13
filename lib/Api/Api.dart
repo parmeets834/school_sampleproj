@@ -14,7 +14,7 @@ import 'package:school_sampleproj/model/Carrage.dart';
 import 'DioClientInstance.dart';
 import '../global/constants.dart';
 
-class Api {
+class StudentApi {
   Dio dio = ApiService().getclient();
 
   Future verifyLoginNew(String Uid, String Pwd) async {
@@ -37,7 +37,7 @@ class Api {
         data: await map);
   }
 
-  Future<Response> getNotifications(UserData data) async {
+  Future<Response> getNotifications(StudentDataModel data) async {
     String ActivityDescStr = getUserActivityString(data.activeUserCode,
         data.activeUserCode, "Class wise Notification List", "Student Apk.");
     ;
@@ -57,7 +57,7 @@ class Api {
     );
   }
 
-  Future<Response> getTaskList(UserData data) async {
+  Future<Response> getTaskList(StudentDataModel data) async {
     String ActivityDescStr = getUserActivityString(data.activeUserCode,
         data.activeUserCode, "Class Home work List", "Student Apk.");
 
@@ -103,7 +103,7 @@ class Api {
   }
 
   // step 2
-  Future<Response> sentOtp(UserData data) async {
+  Future<Response> sentOtp(StudentDataModel data) async {
     return await dio.post(
       "",
       data: {
@@ -119,7 +119,7 @@ class Api {
   }
 
   // step 3
-  Future<Response> verificationOtp(UserData data, String otp) async {
+  Future<Response> verificationOtp(StudentDataModel data, String otp) async {
     return await dio.post(
       "",
       data: {
@@ -128,7 +128,7 @@ class Api {
         "ReqUserID": data.activeUserCode,
         "ReqVeriCode": otp,
         "ReqAcastart": activeAcastart,
-        "ReqPhoneCode": "123456", //firebase api code
+        "ReqPhoneCode": "123456", //firebase api code // teacher not adde
         "ReqSMSType": appRunningMode,
       },
       options: Options(contentType: "application/x-www-form-urlencoded"),
@@ -137,7 +137,7 @@ class Api {
 
   //--------------------------------mentor-------------------------------------------------
 
-  Future<Response> getParentRequest(UserData data) async {
+  Future<Response> getParentRequest(StudentDataModel data) async {
     String ActivityDescStr = getUserActivityString(data.activeUserCode,
         data.activeUserCode, "Class Home work List", "Student Apk.");
 
@@ -156,7 +156,7 @@ class Api {
     );
   }
 
-  Future<Response> getMentorList(UserData data) async {
+  Future<Response> getMentorList(StudentDataModel data) async {
     String ActivityDescStr = getUserActivityString(data.activeUserCode,
         data.activeUserName, "Teachers List of the Class", "Student Apk.");
     DateTime now = DateTime.now();
@@ -190,7 +190,7 @@ class Api {
   }
 
   Future<void> sentMentorRequest(
-      UserData data, Carrage carrage, String message) async {
+      StudentDataModel data, Carrage carrage, String message) async {
     String ActivityDescStr = getUserActivityString(
         data.activeUserCode,
         data.activeUserName,
@@ -219,7 +219,7 @@ class Api {
     );
   }
 //-------------------------------------Gallery--------------------------------------------------
-  Future<Response> getGalleryContent(UserData data) async {
+  Future<Response> getGalleryContent(StudentDataModel data) async {
     String ActivityDescStr = getUserActivityString(data.activeUserCode,
         data.activeUserName, "Study Materials List", "Student Apk.");
 
@@ -241,7 +241,7 @@ class Api {
 
 
 //-------------------------------------Time Table--------------------------------------------------
-  Future<Response> getTimeTabel(UserData data) async {
+  Future<Response> getTimeTabel(StudentDataModel data) async {
     String ActivityDescStr = getUserActivityString(data.activeUserCode,
         data.activeUserName,"Class Time Table",  "Student Apk.");
     return await dio.post(
@@ -256,4 +256,41 @@ class Api {
       options: Options(contentType: "application/x-www-form-urlencoded"),
     );
   }
+
+  //------------------------------------------profile-------------------------------------------------
+  Future<Response> getUserProfile(StudentDataModel data) async {
+    String ActivityDescStr = getUserActivityString(data.activeUserCode,
+        data.activeUserName,"Student Profile",  "Student Apk.");
+    return await dio.post(
+      "",
+      data: {
+        "title": 'GetStudentsInfoFull',
+        "description": ActivityDescStr,
+        "ReqAcastart": activeAcastart ,
+        "ReqUserID":  data.activeUserCode,
+      },
+      options: Options(contentType: "application/x-www-form-urlencoded"),
+    );
+  }
+}
+
+class TeacherApi{
+  Dio dio = ApiService().getclient();
+
+  Future checkTeacherExisit(String Uid) async {
+    String activityDescStr = getUserActivityString(Uid, Uid,
+        "Teacher Info. Request for Profile Verification",  "Teachers Apk.");
+
+    var map = {
+      "title": 'GetTeacherInfo',
+      "description": activityDescStr,
+      "ReqAcastart": activeAcastart,
+      "ReqUserID": Uid,
+    };
+
+    return dio.post("/",
+        options: Options(contentType: "application/x-www-form-urlencoded"),
+        data: await map);
+  }
+
 }

@@ -8,6 +8,7 @@ import 'package:school_sampleproj/global/constant_function.dart';
 import 'package:school_sampleproj/global/constants.dart';
 import 'package:school_sampleproj/model.dart';
 import 'package:school_sampleproj/model/Carrage.dart';
+import 'package:school_sampleproj/model/teacher_details_model.dart';
 import 'file:///D:/Practice%20folder/school_sampleproj/lib/utils/check_dio_error.dart';
 import 'package:school_sampleproj/utils/app_logger.dart';
 import 'package:school_sampleproj/utils/database.dart';
@@ -26,20 +27,30 @@ class RegistrationProvider extends ChangeNotifier {
 
   List<String> user_type = ['Parent', 'Teacher', 'Admin'];
 
-  performRegister() async {
-    activeClientCode=schooldController.text; // this is due to request taken
+  performRegister() {
+    if (activeTypeUser.text == "Parent") {
+      performStudentRegistarion();
+    } else if (activeTypeUser.text == "Teacher") {
+      performTeacherRegistration();
+    }
+  }
+
+  performStudentRegistarion() async {
+
+    /* here is data*/
+
+    activeClientCode = schooldController.text; // this is due to request taken
     seturls();
 
     // Response resp=    await Api().registerUser(userIdcontroller.text,schooldController.text );
 
     Response resp;
     try {
-      resp = await Api().checkUserRegister(userIdcontroller.text);
+      resp = await StudentApi().checkUserRegister(userIdcontroller.text);
     } on DioError catch (e) {
       CheckDioError obj = CheckDioError.check(e);
       if (obj != null) {
-        if (obj.errorCode == 0) {
-        } else {
+        if (obj.errorCode == 0) {} else {
           performRegister();
         }
       }
@@ -55,7 +66,7 @@ class RegistrationProvider extends ChangeNotifier {
 
     String loginStatus = "N/A";
     String loginMsg = "N/A";
-    UserData userData = new UserData();
+    StudentDataModel userData = new StudentDataModel();
     userData.activeClientCode = activeClientCode;
 
     if (list_arr != null) {
@@ -130,22 +141,121 @@ class RegistrationProvider extends ChangeNotifier {
     print("Log In Section " + activeUserSection);
     if (userData.loginStatus == "0" || userData.loginStatus == "1") {
       AppLogger.print("Login Successful");
-      try{
-        if(userData.activeUserCode!=null ){
-         // await DatabaseUtil().insertData(userData);
-          AppLogger.print( userData.toRawJson());
+      try {
+        if (userData.activeUserCode != null) {
+          // await DatabaseUtil().insertData(userData);
+          AppLogger.print(userData.toRawJson());
         }
-      }catch(e){
-    toast(skey, "User Already Login");
+      } catch (e) {
+        toast(skey, "User Already Login");
         return;
       }
-      otp_user=userData;
-      Navigator.pushNamed(context, OtpScreen.classname);
-
+      otp_user = userData;
+      Navigator.pushNamed(context, OtpScreen.classname,);
     } else {
       toast(skey, "User not found");
     }
 
+    // end is here
+  }
 
+  void performTeacherRegistration() async {
+
+
+    /* here is data*/
+
+    activeClientCode = schooldController.text; // this is due to request taken
+    seturls();
+
+    // Response resp=    await Api().registerUser(userIdcontroller.text,schooldController.text );
+
+    Response resp;
+    try {
+      resp = await TeacherApi().checkTeacherExisit(userIdcontroller.text);
+    } on DioError catch (e) {
+      CheckDioError obj = CheckDioError.check(e);
+      if (obj != null) {
+        if (obj.errorCode == 0) {} else {
+          performRegister();
+        }
+      }
+    }
+
+
+    String Respstring = resp.data.toString();
+    Respstring = Respstring.substring(0, Respstring.indexOf("||JasonEnd", 0));
+    var jsonResponse = jsonDecode(Respstring);
+    list_arr = jsonResponse;
+    TeacherDetailModel model = new TeacherDetailModel();
+
+    String loginStatus = "N/A";
+    String loginMsg = "N/A";
+    if (list_arr != null) {
+      for (int j = 0; j < list_arr.length; j++) {
+        if (list_arr[j]["ItemKeyName"] == "TeacherInfo") {
+          model.loginSatus = list_arr[j]["InfoField1"];
+          model.loginmsg = list_arr[j]["InfoField"];
+        }
+        if (list_arr[j]["ItemKeyName"] == "EMPCODE") {
+          model.activeUserCode = list_arr[j]["InfoField"];
+
+          model.activeUserMstid = list_arr[j]["InfoField1"];
+          model.activeUserYrid = list_arr[j]["InfoField2"];
+        }
+        if (list_arr[j]["ItemKeyName"] == "EmployeeName") {
+          model.activeUserName = list_arr[j]["InfoField"];
+        }
+
+        if (list_arr[j]["ItemKeyName"] == "FATHERNAME") {
+          model.activeUserFName = list_arr[j]["InfoField"];
+        }
+
+        if (list_arr[j]["ItemKeyName"] == "EMPLOYEECATEGORY") {
+          model.activeUserEmployeeCategory = list_arr[j]["InfoField"];
+        }
+
+
+        if (list_arr[j]["ItemKeyName"] == "Gender") {
+          model.activeUserGender = list_arr[j]["InfoField"];
+        }
+
+        if (list_arr[j]["ItemKeyName"] == "DRPYN") {
+          model.activeUserTcSts = list_arr[j]["InfoField"];
+        }
+        if (list_arr[j]["ItemKeyName"] == "MOBILENO") {
+          model.activeUserPhone = list_arr[j]["InfoField"];
+        }
+        if (list_arr[j]["ItemKeyName"] == "EMPCLASS") {
+          model.activeUserClass = list_arr[j]["InfoField"];
+          model.activeNotificationNos = list_arr[j]["InfoField3"];
+        }
+        if (list_arr[j]["ItemKeyName"] == "EMPSECTION") {
+          model.activeUserSection = list_arr[j]["InfoField"];
+          model.examTerm1Classes = list_arr[j]["InfoField2"];
+          model.examTerm2Classes = list_arr[j]["InfoField3"];
+        }
+
+
+        if (list_arr[j]["ItemKeyName"] == "EMPLOYEECATEGORY") {
+          model.activeUserEmployeeCategory = list_arr[j]["InfoField"];
+        }
+        if (list_arr[j]["ItemKeyName"] == "EmployeeType") {
+          model.activeUserEmployeeTyp = list_arr[j]["InfoField"];
+        }
+
+        if (list_arr[j]["ItemKeyName"] == "Designation") {
+          model.activeUserSalutation = list_arr[j]["InfoField"];
+        }
+
+        if (list_arr[j]["ItemKeyName"] == "Salutation") {
+          model.activeUserSalutation = list_arr[j]["InfoField"];
+        }
+
+        if (list_arr[j]["ItemKeyName"] == "PHOTOFILE") {
+          model.activeUserImage = list_arr[j]["InfoField"];
+          print("photo file " + model.activeUserImage);
+        }
+      }
+    }
   }
 }
