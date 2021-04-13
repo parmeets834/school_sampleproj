@@ -32,7 +32,7 @@ class _OtpScreenState extends State<OtpScreen> {
   @override
   void initState() {
     final provider = Provider.of<OtpProvider>(context, listen: false);
-    provider.sentOtp();
+//    provider.sentOtp();
     provider.skey = new GlobalKey<ScaffoldState>();
   }
 

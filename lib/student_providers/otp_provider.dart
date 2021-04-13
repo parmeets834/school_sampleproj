@@ -27,6 +27,8 @@ class OtpProvider extends ChangeNotifier {
       return;
     }*/
  /*   if(model.infoField2==otpInputController.text.trim()){*/
+
+
       Response resp=await StudentApi().verificationOtp(otp_user, otpInputController.text.trim());
      String str= refineString(resp.data.toString());
    List<dynamic> ls= jsonDecode(str);
@@ -60,11 +62,11 @@ class OtpProvider extends ChangeNotifier {
 
   }
 
-  void sentOtp() async {
+  /*void sentOtp() async {
     Response resp = await StudentApi().sentOtp(otp_user);
     String data = refineString(resp.data.toString());
    List<dynamic> ls= jsonDecode(data);
      model= OtpResponseModel.fromJson(ls[0]);
     print("otp data is : ${model.infoField2}");
-  }
+  }*/
 }

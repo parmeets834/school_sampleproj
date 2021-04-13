@@ -151,7 +151,7 @@ class RegistrationProvider extends ChangeNotifier {
         return;
       }
       otp_user = userData;
-      Navigator.pushNamed(context, OtpScreen.classname,);
+      Navigator.pushNamed(context, OtpScreen.classname,arguments: Carrage());
     } else {
       toast(skey, "User not found");
     }
@@ -161,13 +161,8 @@ class RegistrationProvider extends ChangeNotifier {
 
   void performTeacherRegistration() async {
 
-
-    /* here is data*/
-
     activeClientCode = schooldController.text; // this is due to request taken
     seturls();
-
-    // Response resp=    await Api().registerUser(userIdcontroller.text,schooldController.text );
 
     Response resp;
     try {
@@ -257,5 +252,6 @@ class RegistrationProvider extends ChangeNotifier {
         }
       }
     }
+
   }
 }

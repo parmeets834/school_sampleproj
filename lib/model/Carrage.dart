@@ -9,10 +9,14 @@ import 'package:school_sampleproj/model/post_model.dart';
 import 'mentor_request_model.dart';
 import 'mentors_detail_model.dart';
 
+enum otp_user_type{student, admin,parent }
+
 class Carrage{
   StudentDataModel userData;
   PostModel postModel;
   MentorDetailModel teacherDetailModel;
   MentorRequestModel mentorRequestModel;
-  Carrage({this.userData,this.postModel,this.teacherDetailModel,this.mentorRequestModel});
+  dynamic otpuserType;
+
+  Carrage({this.otpuserType,this.userData,this.postModel,this.teacherDetailModel,this.mentorRequestModel});
 }

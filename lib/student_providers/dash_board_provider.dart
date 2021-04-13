@@ -54,7 +54,6 @@ class DashBoardProvider extends ChangeNotifier {
       case 4:
         Navigator.pushNamed(context, StudentTimeTablePage.classname);
         break;
-
       case 5:
         Navigator.pushNamed(context, Mentor.classname);
         break;
