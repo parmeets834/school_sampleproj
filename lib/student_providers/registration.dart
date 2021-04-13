@@ -151,7 +151,7 @@ class RegistrationProvider extends ChangeNotifier {
         return;
       }
       otp_user = userData;
-      Navigator.pushNamed(context, OtpScreen.classname,arguments: Carrage());
+      Navigator.pushNamed(context, OtpScreen.classname,arguments: Carrage(usertype: userType.parent));
     } else {
       toast(skey, "User not found");
     }
@@ -252,6 +252,8 @@ class RegistrationProvider extends ChangeNotifier {
         }
       }
     }
+
+    Navigator.pushNamed(context, OtpScreen.classname,arguments: Carrage(usertype: userType.teacher));
 
   }
 }

@@ -38,10 +38,9 @@ class _OtpScreenState extends State<OtpScreen> {
 
   @override
   Widget build(BuildContext context) {
-
-
     final provider = Provider.of<OtpProvider>(context);
     provider.context = context;
+    provider.carrage=ModalRoute.of(context).settings.arguments;
 
     _height = MediaQuery.of(context).size.height;
     _width = MediaQuery.of(context).size.width;

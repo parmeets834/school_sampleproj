@@ -6,7 +6,7 @@ import 'package:school_sampleproj/model/Student.dart';
 
 const login_credentials = "login_credentials";
 const demo_image_url="https://bitsofco.de/content/images/2018/12/broken-1.png";
-
+enum userType{parent,teacher,admin}
 
 
 // colors
