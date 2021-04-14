@@ -14,14 +14,20 @@ import 'package:url_launcher/url_launcher.dart';
 class TeacherDashBoardProvider extends ChangeNotifier {
   List<DasBoardItem> items = [
     DasBoardItem(image: 'assets/notification.svg', title: 'Notification'),
-    DasBoardItem(image: 'assets/checklist.svg', title: 'My Task'),
+    DasBoardItem(image: 'assets/checklist.svg', title: 'Home Work'),
     DasBoardItem(image: 'assets/gallery.svg', title: 'Gallery'),
-    DasBoardItem(image: 'assets/online-lession.svg', title: 'My Mentors'),
-    DasBoardItem(image: 'assets/calendar2.svg', title: 'Time Table'),
-    DasBoardItem(image: 'assets/chat.svg', title: 'Ask My Mentor'), //6
-    DasBoardItem(image: 'assets/id-card2.svg', title: 'This is Me'),
-    DasBoardItem(image: 'assets/graph.svg', title: 'My performance'),
+    DasBoardItem(image: 'assets/online-lession.svg', title: 'Reply to Parent'),
     DasBoardItem(image: 'assets/canvas.svg', title: 'Notice Board'),
+    DasBoardItem(image: 'assets/id-card2.svg', title: 'My Profile'),
+    DasBoardItem(image: 'assets/bookshelf.svg', title: 'Subject List'), // subject
+    DasBoardItem(image: 'assets/calendar2.svg', title: 'Time Table'),
+    DasBoardItem(image: 'assets/today_calender.svg', title: 'Today Schedule'), //6
+
+    DasBoardItem(image: 'assets/students.svg', title: 'Student Details'),
+    DasBoardItem(image: 'assets/teacher.svg', title: 'Teachers Details'),
+    DasBoardItem(image: 'assets/class_time_table.svg', title: 'Class Time Table'),
+    DasBoardItem(image: 'assets/class_time_table.svg', title: 'Home Work'),
+
     DasBoardItem(image: 'assets/report1.svg', title: 'Fees Details'),
     DasBoardItem(image: 'assets/googlemeet.svg', title: 'Google \n Meet'),
     DasBoardItem(image: 'assets/zoom.svg', title: 'Zoom \n '),
