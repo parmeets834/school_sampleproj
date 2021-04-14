@@ -5,8 +5,10 @@ import 'package:provider/provider.dart';
 import 'package:school_sampleproj/Screen/DashBoard/dashboard_screen.dart';
 import 'package:school_sampleproj/Screen/SignIn/registration.dart';
 import 'package:school_sampleproj/Screen/TeacherDashBoard/teacher_dashboard_screen.dart';
+import 'package:school_sampleproj/model.dart';
 import 'package:school_sampleproj/model/Carrage.dart';
 import 'package:school_sampleproj/model/Student.dart';
+import 'package:school_sampleproj/model/teacher_details_model.dart';
 import 'package:school_sampleproj/student_providers/dash_board_provider.dart';
 import 'package:school_sampleproj/student_providers/pre_login/pre_login_provider.dart';
 import 'package:school_sampleproj/widget/Cards/user_cards.dart';
@@ -143,12 +145,13 @@ class _PreLoginState extends State<PreLogin> {
                     gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                         crossAxisCount: 2, childAspectRatio: 1.2),
                     itemBuilder: (BuildContext context, int index) {
+                    if(value.loggedUserList[index] is StudentDataModel){
                       return InkWell(
                           onTap: () {
                             Navigator.pushNamed(
                                 context, StudentDashBoard.classname,
                                 arguments: Carrage(
-                                    userData: value.loggedUserList[index]));
+                                    studentData: value.loggedUserList[index]));
                           },
                           child: UserCard(
                             name:
@@ -158,6 +161,26 @@ class _PreLoginState extends State<PreLogin> {
                             rollno:
                                 "User code: ${value.loggedUserList[index].activeUserCode}",
                           ));
+                    }
+                    else if(value.loggedUserList[index] is TeacherDetailModel ){
+
+                      return InkWell(
+                          onTap: () {
+                            Navigator.pushNamed(
+                                context, TeachersDashBoard.classname,
+                                arguments: Carrage(
+                                    teacherDetailModel: value.loggedUserList[index]));
+                          },
+                          child: UserCard(
+                            name:
+                            "Name :${value.loggedUserList[index].activeUserName}",
+                            classname:
+                            "Class: ${value.loggedUserList[index].activeUserClass}",
+                            rollno:
+                            "User code: ${value.loggedUserList[index].activeUserCode}",
+                          ));
+
+                    }
                     },
                   ));
             } else {

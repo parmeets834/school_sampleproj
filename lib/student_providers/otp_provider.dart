@@ -26,6 +26,8 @@ class OtpProvider extends ChangeNotifier {
   void submitOtp() async {
   if(carrage.usertype==userType.parent) {
     submitStudentOtp();
+  }else if (carrage.usertype==userType.teacher){
+    submitTeacherOtp();
   }
   }
 
@@ -51,6 +53,31 @@ class OtpProvider extends ChangeNotifier {
     }else{
       toast(skey, "Otp Authentication Failed");
     }
+  }
+
+  Future<void> submitTeacherOtp() async {
+    Response resp=await TeacherApi().authenticateTeacher(otp_teacher, otpInputController.text.trim());
+    String str= refineString(resp.data.toString());
+    List<dynamic> ls= jsonDecode(str);
+    if(OtpVerificationModel.fromJson(ls[0]).infoField1=="0" || OtpVerificationModel.fromJson(ls[0]).infoField1=="1"){
+      toast(skey, "User Authenticate Successfully");
+
+      try {
+        DatabaseUtil().insertTeacherData(otp_teacher);
+      } catch(e){
+        toast(skey, "User Already Register");
+      }
+
+      Provider.of<PreLoginProvider>(context,listen: false).state=appstate.reload;
+      Timer(Duration(seconds: 1), () {
+        Navigator.pushNamedAndRemoveUntil(context, PreLogin.classname, (route) => false);
+      });
+
+
+    }else{
+      toast(skey, "Otp Authentication Failed");
+    }
+
   }
 
 }

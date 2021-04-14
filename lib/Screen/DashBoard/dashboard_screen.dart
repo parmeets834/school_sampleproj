@@ -50,7 +50,7 @@ class _StudentDashBoardState extends State<StudentDashBoard> with RouteAware {
      final provider=Provider.of<DashBoardProvider>(context);
      provider.context=context;
     provider.carrage=ModalRoute.of(context).settings.arguments;
-    currunt_user=provider.carrage.userData;
+    currunt_user=provider.carrage.studentData;
     setConfigurationAsPerUser(currunt_user);
     seturls();
     return Scaffold(
@@ -89,8 +89,8 @@ class _StudentDashBoardState extends State<StudentDashBoard> with RouteAware {
                           children: [
 
                             Text("St Marry Public School",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 14),),
-                            Text("Student:${provider.carrage.userData.activeUserName}",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 14),),
-                            Text("Class : ${provider.carrage.userData.activeUserClass}",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 14),),
+                            Text("Student:${provider.carrage.studentData.activeUserName}",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 14),),
+                            Text("Class : ${provider.carrage.studentData.activeUserClass}",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 14),),
                             Text("DashBoard: Parent",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 14),),
 
                           ],),

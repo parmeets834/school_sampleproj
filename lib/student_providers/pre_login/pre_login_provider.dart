@@ -5,11 +5,12 @@
 import 'package:flutter/material.dart';
 import 'package:school_sampleproj/global/constants.dart';
 import 'package:school_sampleproj/model.dart';
+import 'package:school_sampleproj/model/teacher_details_model.dart';
 import 'package:school_sampleproj/utils/database.dart';
 
 class PreLoginProvider extends ChangeNotifier{
 
-  List<StudentDataModel> loggedUserList;
+  List<dynamic> loggedUserList;
   dynamic state=appstate.defaultstate;
 
   loadLoginUsers() async{
@@ -18,9 +19,12 @@ class PreLoginProvider extends ChangeNotifier{
    for(dynamic item in ls){
      String str=item["userdata"];
      print("data is here ${str}");
+     String usertype_str=item["usertype"];
+
+     if(usertype_str=="${userType.parent}")
      loggedUserList.add(StudentDataModel.fromRawJson(str));
-
-
+     else if(usertype_str=="${userType.teacher}")
+     loggedUserList.add(TeacherDetailModel.fromRawJson(str));
    }
 notifyListeners();
   }

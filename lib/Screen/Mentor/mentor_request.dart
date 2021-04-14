@@ -39,7 +39,7 @@ provider.context=context;
           builder: (context, value,child) {
           return Column(
             children: [
-              PersonDetailCard(name:  provider.carrage.teacherDetailModel.empName,classname:  provider.carrage.teacherDetailModel.tClass,),
+              PersonDetailCard(name:  provider.carrage.mentorDetailModel.empName,classname:  provider.carrage.mentorDetailModel.tClass,),
               SizedBox(
                 height: 20,
               ),

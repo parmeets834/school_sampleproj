@@ -10,6 +10,7 @@ import 'package:school_sampleproj/global/constant_function.dart';
 import 'package:school_sampleproj/global/constants.dart';
 import 'package:school_sampleproj/model.dart';
 import 'package:school_sampleproj/model/Carrage.dart';
+import 'package:school_sampleproj/model/teacher_details_model.dart';
 
 import 'DioClientInstance.dart';
 import '../global/constants.dart';
@@ -213,7 +214,7 @@ class StudentApi {
         "ReqAdmno": data.activeUserCode,
         "ReqPMDate": curDate,
         "ReqPMessage": message,
-        "ReqSubject": carrage.teacherDetailModel.subj,
+        "ReqSubject": carrage.mentorDetailModel.subj,
       },
       options: Options(contentType: "application/x-www-form-urlencoded"),
     );
@@ -277,6 +278,7 @@ class StudentApi {
 class TeacherApi{
   Dio dio = ApiService().getclient();
 
+  // step 1
   Future checkTeacherExisit(String Uid) async {
     String activityDescStr = getUserActivityString(Uid, Uid,
         "Teacher Info. Request for Profile Verification",  "Teachers Apk.");
@@ -292,5 +294,45 @@ class TeacherApi{
         options: Options(contentType: "application/x-www-form-urlencoded"),
         data: await map);
   }
+
+  // step 2
+   sentOtp(TeacherDetailModel teacherDetailModel) async {
+    Dio dio = ApiService().getclient();
+    String active_user=getUserActivityString(teacherDetailModel.activeUserCode,teacherDetailModel.activeUserName,"Send Verification Code Teacher",  "Teachers Apk.");
+
+ var map=  { // step 2
+
+    "title": 'SendVerificationTeacher',
+    "description": active_user,
+    "ReqAcastart": activeAcastart,
+    "ReqUserID": teacherDetailModel.activeUserCode,
+    "ReqSMSType":  appRunningMode,
+  };
+
+    return dio.post("/",
+        options: Options(contentType: "application/x-www-form-urlencoded"),
+        data: map);
+  }
+
+  // step 3
+  authenticateTeacher(TeacherDetailModel teacherDetailModel,String verificationCode){
+    Dio dio = ApiService().getclient();
+    String active_user_description=getUserActivityString(teacherDetailModel.activeUserCode,teacherDetailModel.activeUserName,"User Verification Request Teacher",  "Teachers Apk.");
+
+    var map=  { // step 2
+      "title": 'UserVerificationTeacher',
+      "description": active_user_description,
+      "ReqUserID":  teacherDetailModel.activeUserCode,
+      "ReqVeriCode": verificationCode ,
+      "ReqPhoneCode": "" ,// reqphonecode
+      "ReqAcastart": activeAcastart ,
+    };
+
+    return dio.post("/",
+        options: Options(contentType: "application/x-www-form-urlencoded"),
+        data: map);
+  }
+
+
 
 }

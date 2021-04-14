@@ -8,6 +8,7 @@ import 'package:school_sampleproj/global/constant_function.dart';
 import 'package:school_sampleproj/global/constants.dart';
 import 'package:school_sampleproj/model.dart';
 import 'package:school_sampleproj/model/Carrage.dart';
+import 'package:school_sampleproj/model/responses/OtpModel.dart';
 import 'package:school_sampleproj/model/teacher_details_model.dart';
 import 'file:///D:/Practice%20folder/school_sampleproj/lib/utils/check_dio_error.dart';
 import 'package:school_sampleproj/utils/app_logger.dart';
@@ -151,6 +152,14 @@ class RegistrationProvider extends ChangeNotifier {
         return;
       }
       otp_user = userData;
+
+      try{
+        await sentStudentOtp();
+
+      }catch(e){
+
+      }
+
       Navigator.pushNamed(context, OtpScreen.classname,arguments: Carrage(usertype: userType.parent));
     } else {
       toast(skey, "User not found");
@@ -183,8 +192,6 @@ class RegistrationProvider extends ChangeNotifier {
     list_arr = jsonResponse;
     TeacherDetailModel model = new TeacherDetailModel();
 
-    String loginStatus = "N/A";
-    String loginMsg = "N/A";
     if (list_arr != null) {
       for (int j = 0; j < list_arr.length; j++) {
         if (list_arr[j]["ItemKeyName"] == "TeacherInfo") {
@@ -253,7 +260,28 @@ class RegistrationProvider extends ChangeNotifier {
       }
     }
 
-    Navigator.pushNamed(context, OtpScreen.classname,arguments: Carrage(usertype: userType.teacher));
+    otp_teacher=model;
 
+    try{sentTeacherOtp();}catch(e){}
+
+    Navigator.pushNamed(context, OtpScreen.classname,arguments: Carrage(usertype: userType.teacher));
   }
+
+  void sentStudentOtp() async {
+    Response resp = await StudentApi().sentOtp(otp_user);
+    String data = refineString(resp.data.toString());
+    List<dynamic> ls= jsonDecode(data);
+    OtpResponseModel model= OtpResponseModel.fromJson(ls[0]);
+    AppLogger.print("otp data is : ${model.infoField2}");
+  }
+
+  void sentTeacherOtp() async {
+    Response resp = await TeacherApi().sentOtp(otp_teacher);
+    String data = refineString(resp.data.toString());
+    List<dynamic> ls= jsonDecode(data);
+    OtpResponseModel model= OtpResponseModel.fromJson(ls[0]);
+    AppLogger.print("otp data is : ${model.infoField2}");
+  }
+
+
 }

@@ -5,6 +5,7 @@
 import 'package:path/path.dart';
 import 'package:school_sampleproj/global/constants.dart';
 import 'package:school_sampleproj/model.dart';
+import 'package:school_sampleproj/model/teacher_details_model.dart';
 import 'package:sqflite/sqflite.dart';
 
 class DatabaseUtil {
@@ -39,7 +40,7 @@ class DatabaseUtil {
     Database database = await openDatabase(path, version: 1,
         onCreate: (Database db, int version) async {
       // When creating the db, create the table
-      await db.execute('CREATE TABLE '+userTable+' (userId VARCHAR(20) PRIMARY KEY, userdata TEXT,usertype int)');
+      await db.execute('CREATE TABLE '+userTable+' (userId VARCHAR(20) PRIMARY KEY, userdata TEXT,usertype VARCHAR(20))');
     });
 
   }
@@ -72,6 +73,21 @@ insertStudentData(StudentDataModel userData)async{
   });
 
 }
+
+  insertTeacherData(TeacherDetailModel userData)async{
+    await _openDb();
+    await database.transaction((txn) async {
+      int id1 = await txn.rawInsert(
+          "INSERT INTO "+userTable+"(userId,userdata,usertype) VALUES('"+userData.activeUserCode+"','"+userData.toRawJson()+"','"+userType.teacher.toString()+"');");
+      print('inserted1: $id1');
+
+      //    print('inserted2: $id2');
+    });
+
+  }
+
+
+
 
 getLoggedUser()async{
   await _openDb();

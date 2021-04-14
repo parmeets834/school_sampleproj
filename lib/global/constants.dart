@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:school_sampleproj/model.dart';
 import 'package:school_sampleproj/model/Student.dart';
+import 'package:school_sampleproj/model/teacher_details_model.dart';
 
 //string
 
@@ -27,6 +28,7 @@ const color_dark_theme=Color(0xFF1f9ef1);
 // objects
  StudentDataModel currunt_user;
  StudentDataModel otp_user;
+ TeacherDetailModel otp_teacher;
 
 
 //-----------------------------------outside parameter given by client----------------------------------------------------------------

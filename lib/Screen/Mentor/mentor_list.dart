@@ -43,7 +43,7 @@ class _MentorListState extends State<MentorList> {
                     child: ListView.builder(
                       itemBuilder: (_, index) => InkWell(
                         child: InkWell(
-                          onTap:()=> Navigator.pushNamed(context, MentorRequest.classname,arguments: Carrage(teacherDetailModel:value.teacherList[index])),
+                          onTap:()=> Navigator.pushNamed(context, MentorRequest.classname,arguments: Carrage(mentorDetailModel:value.teacherList[index])),
                           child: TeacherCard(name: "${value.teacherList[index].empName}",color:value.colors[index],
                             subject: "${value.teacherList[index].subj}", ),
                         ),
