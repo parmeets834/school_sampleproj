@@ -12,7 +12,7 @@ import 'package:school_sampleproj/student_providers/task/task_provider.dart';
 import 'package:school_sampleproj/widget/Cards/task_item.dart';
 import 'package:school_sampleproj/widget/Cards/task_item_shimmer.dart';
 import 'package:school_sampleproj/widget/ShimmerContainer.dart';
-import 'package:school_sampleproj/widget/app_bar/app_bar.dart';
+import 'package:school_sampleproj/widget/app_bar/app_bar_student.dart';
 import 'package:shimmer/shimmer.dart';
 
 class Task extends StatefulWidget {
@@ -32,8 +32,8 @@ class _TaskState extends State<Task> {
     final provider = Provider.of<TaskDataProvider>(context);
     return Scaffold(
       appBar: PreferredSize(
-          preferredSize: AppBarCommon.getSize(context),
-          child: AppBarCommon(title: "My Task")),
+          preferredSize: AppBarCommonStudent.getSize(context),
+          child: AppBarCommonStudent(title: "My Task")),
       body: Consumer<TaskDataProvider>(
           builder: (context, value, child) {
         if (provider.state == appstate.loading) {

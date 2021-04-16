@@ -29,16 +29,16 @@ class PreLoginProvider extends ChangeNotifier{
 notifyListeners();
   }
 
-  // dependecy on otp screen
-  isUserListUpdate(){
-    if(state!=appstate.reload){
-      return;
-    }
-    state=appstate.defaultstate;
-    loadLoginUsers();
+updateUserList(){
+loggedUserList=null;
+loadLoginUsers();
+}
 
-  }
-
+removeAllUserFromDataBase() async {
+  await DatabaseUtil().deleteUserData();
+  loggedUserList=null;
+  loadLoginUsers();
+}
 
 
 

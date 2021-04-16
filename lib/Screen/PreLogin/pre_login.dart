@@ -5,6 +5,7 @@ import 'package:provider/provider.dart';
 import 'package:school_sampleproj/Screen/DashBoard/dashboard_screen.dart';
 import 'package:school_sampleproj/Screen/SignIn/registration.dart';
 import 'package:school_sampleproj/Screen/TeacherDashBoard/teacher_dashboard_screen.dart';
+import 'package:school_sampleproj/global/constants.dart';
 import 'package:school_sampleproj/model.dart';
 import 'package:school_sampleproj/model/Carrage.dart';
 import 'package:school_sampleproj/model/Student.dart';
@@ -42,7 +43,6 @@ class _PreLoginState extends State<PreLogin> {
   @override
   Widget build(BuildContext context) {
     final provider = Provider.of<PreLoginProvider>(context);
-    provider.isUserListUpdate();
     _height = MediaQuery.of(context).size.height;
     _width = MediaQuery.of(context).size.width;
     _pixelRatio = MediaQuery.of(context).devicePixelRatio;
@@ -53,7 +53,7 @@ class _PreLoginState extends State<PreLogin> {
     return Scaffold(
       appBar: AppBar(
         leading: Icon(Icons.list),
-        title: Text("Login to Cloud Campus"),
+        title: Text("Cloud Campus App"),
       ),
       body: Consumer<PreLoginProvider>(builder: (context, value, child) {
         return Stack(children: [
@@ -118,21 +118,49 @@ class _PreLoginState extends State<PreLogin> {
                 Divider(
                   thickness: 1,
                 ),
-                Align(
-                    alignment: Alignment.centerLeft,
-                    child: InkWell(
-                      onTap: () {
-                        Navigator.pushNamed(context, SignUpScreen.classname);
-                      },
-                      // todo add no user register if list is empty
-                      child: Padding(
-                          padding: EdgeInsets.only(left: 15),
-                          child: Text(
-                            "Registered Users List",
-                            style: TextStyle(
-                                fontWeight: FontWeight.bold, fontSize: 17),
-                          )),
-                    )),
+                Row(
+                  children: [
+                    Align(
+                        alignment: Alignment.centerLeft,
+                        child: InkWell(
+                          onTap: () {
+                            Navigator.pushNamed(context, SignUpScreen.classname);
+                          },
+                          // todo add no user register if list is empty
+                          child: Padding(
+                              padding: EdgeInsets.only(left: 15),
+                              child: Text(
+                                "Registered Users List",
+                                style: TextStyle(
+                                    fontWeight: FontWeight.bold, fontSize: 17),
+                              )),
+                        )),
+                   Spacer(),
+                    ((){
+                      if(appRunningMode=="Testing")
+                      return Align(
+                          alignment: Alignment.centerRight,
+                          child: InkWell(
+                            onTap: () {
+                              value.removeAllUserFromDataBase();
+                            },
+                            // todo add no user register if list is empty
+                            child: Padding(
+                                padding: EdgeInsets.only(right: 15),
+                                child: Container(
+                                  height: 20,
+                                  width: 20,
+                                  child: Text(
+                                    "X",
+                                    style: TextStyle(color: Colors.red,
+                                        fontWeight: FontWeight.bold, fontSize: 17),
+                                  ),
+                                )),
+                          ));
+                      else return Container();
+                    }())
+                  ],
+                ),
               ],
             ),
           ),

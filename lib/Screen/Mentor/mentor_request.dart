@@ -6,7 +6,8 @@ import 'package:provider/provider.dart';
 import 'package:school_sampleproj/global/constants.dart';
 import 'package:school_sampleproj/student_providers/mentor/mentor_request.dart';
 import 'package:school_sampleproj/widget/Cards/person_detail_card.dart';
-import 'package:school_sampleproj/widget/app_bar/app_bar.dart';
+
+import 'package:school_sampleproj/widget/app_bar/app_bar_student.dart';
 import 'package:school_sampleproj/widget/button/gradient_button.dart';
 import 'package:school_sampleproj/widget/textbox/multiTextInput.dart';
 
@@ -30,8 +31,8 @@ provider.context=context;
 
     return Scaffold(
       appBar: PreferredSize(
-        preferredSize: AppBarCommon.getSize(context),
-        child: AppBarCommon(
+        preferredSize: AppBarCommonStudent.getSize(context),
+        child: AppBarCommonStudent(
           title: "Mentor Request",
         ),
       ),

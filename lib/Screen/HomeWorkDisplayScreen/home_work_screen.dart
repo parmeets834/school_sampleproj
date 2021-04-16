@@ -40,6 +40,10 @@ class _HomeWorkScreenState extends State<HomeWorkScreen> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 ((){
+                  if(postData.mediaType==null){
+                    return Container();
+                  }
+                  
                   if(postData.mediaUrl!=null && postData.mediaType.toLowerCase()=="image" )
                     return InkWell(
                       onTap: (){

@@ -7,7 +7,7 @@ import 'package:school_sampleproj/Screen/DashBoard/dashboard_screen.dart';
 import 'package:school_sampleproj/Screen/MediaViewers/ImageViewer.dart';
 import 'package:school_sampleproj/Screen/MediaViewers/pdf_view.dart';
 import 'package:school_sampleproj/Screen/MediaViewers/youtube.dart';
-import 'package:school_sampleproj/Screen/Notification/notification_screen.dart';
+import 'package:school_sampleproj/Screen/Notification/notification_upload_screen.dart';
 import 'package:school_sampleproj/Screen/PreLogin/pre_login.dart';
 import 'package:school_sampleproj/Screen/TeacherDashBoard/teacher_dashboard_screen.dart';
 import 'package:school_sampleproj/model.dart';
@@ -17,11 +17,13 @@ import 'package:school_sampleproj/student_providers/mediaViewers/youtube_provide
 import 'package:school_sampleproj/student_providers/mentor/mentor_request.dart';
 import 'package:school_sampleproj/student_providers/profile/profile_provider.dart';
 import 'package:school_sampleproj/student_providers/task/task_provider.dart';
+import 'package:school_sampleproj/teachers_provider/notification_upload.dart';
 import 'Screen/Gallery/gallery_screen.dart';
 import 'Screen/HomeWorkDisplayScreen/home_work_screen.dart';
 import 'Screen/MediaViewers/image_cropper.dart';
 import 'Screen/MediaViewers/video_player.dart';
 import 'Screen/MyMentors/my_mentor_list.dart';
+import 'Screen/Notification/notification_display_screen.dart';
 import 'Screen/TimeTable/time_table.dart';
 import 'Screen/profile/profile.dart';
 import 'file:///D:/Practice%20folder/school_sampleproj/lib/student_providers/video_player.dart';
@@ -79,6 +81,8 @@ void main() async{
         ChangeNotifierProvider(create: (ctx) => ProfileProvider()),
         /* Teachers providers*/
         ChangeNotifierProvider(create: (ctx) => TeacherDashBoardProvider()),
+        ChangeNotifierProvider(create:(ctx)=>NotificationUploadProvider())
+
       ],
       child: MyApp(),
     ));
@@ -109,6 +113,7 @@ class MyApp extends StatelessWidget {
         MentorResponse.classname:(context)=>MentorResponse(),
         MentorList.classname:(context)=>MentorList(),
         NotificationScreen.classname:(context)=>NotificationScreen(),
+        NotificationUpload.classname:(context)=>NotificationUpload(),
         ImageDisplay.classname:(context)=>ImageDisplay(),
         ImageViewer.classname:(context)=>ImageViewer(),
         PreLogin.classname:(context)=>PreLogin(),

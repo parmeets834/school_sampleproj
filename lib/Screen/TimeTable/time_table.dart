@@ -10,7 +10,8 @@ import 'package:http/http.dart' as http;
 import 'package:school_sampleproj/Api/Api.dart';
 import 'package:school_sampleproj/global/constant_function.dart';
 import 'package:school_sampleproj/global/constants.dart';
-import 'package:school_sampleproj/widget/app_bar/app_bar.dart';
+import 'package:school_sampleproj/widget/app_bar/app_bar_student.dart';
+
 import 'dart:convert' as convert;
 
 import 'package:school_sampleproj/widget/table_sticky_headers_fees.dart';
@@ -104,8 +105,8 @@ class _StudentTimeTablePageState extends State<StudentTimeTablePage> {
   Widget build(BuildContext context) => MaterialApp(
         home: Scaffold(
           appBar: PreferredSize(
-              preferredSize: AppBarCommon.getSize(context),
-              child: AppBarCommon(title: "My Task")),
+              preferredSize: AppBarCommonStudent.getSize(context),
+              child: AppBarCommonStudent(title: "My Task")),
           body: StickyHeadersTable(
             columnsLength: widget.titleColumn.length,
             rowsLength: widget.titleRow.length,

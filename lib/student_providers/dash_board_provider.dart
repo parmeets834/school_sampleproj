@@ -3,7 +3,8 @@ import 'package:school_sampleproj/Screen/Gallery/gallery_screen.dart';
 import 'package:school_sampleproj/Screen/MediaViewers/image_cropper.dart';
 import 'package:school_sampleproj/Screen/Mentor/mentor.dart';
 import 'package:school_sampleproj/Screen/MyMentors/my_mentor_list.dart';
-import 'package:school_sampleproj/Screen/Notification/notification_screen.dart';
+import 'package:school_sampleproj/Screen/Notification/notification_display_screen.dart';
+
 import 'package:school_sampleproj/Screen/Task/Task.dart';
 import 'package:school_sampleproj/Screen/TimeTable/time_table.dart';
 import 'package:school_sampleproj/Screen/profile/profile.dart';
@@ -23,6 +24,10 @@ class DashBoardProvider extends ChangeNotifier {
     DasBoardItem(image: 'assets/graph.svg', title: 'My performance'),
     DasBoardItem(image: 'assets/canvas.svg', title: 'Notice Board'),
     DasBoardItem(image: 'assets/report1.svg', title: 'Fees Details'),
+    DasBoardItem(image: 'assets/webinar.svg', title: 'Smart Class'),
+    DasBoardItem(image: 'assets/payment-method.svg', title: 'Online Payment'),
+
+
     DasBoardItem(image: 'assets/googlemeet.svg', title: 'Google \n Meet'),
     DasBoardItem(image: 'assets/zoom.svg', title: 'Zoom \n '),
     DasBoardItem(image: 'assets/microsoft.svg', title: 'MicroSoft Teams'),
@@ -60,13 +65,13 @@ class DashBoardProvider extends ChangeNotifier {
       case 6:
         Navigator.pushNamed(context, Profile.classname);
         break;
-      case 10:
+      case 12:
         _googleMeet();
         break;
-      case 11:
+      case 13:
         _launchZoom();
         break;
-      case 12:
+      case 14:
         _launchTeams();
         break;
     }

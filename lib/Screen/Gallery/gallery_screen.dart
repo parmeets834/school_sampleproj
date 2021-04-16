@@ -11,7 +11,7 @@ import 'package:school_sampleproj/Screen/MediaViewers/youtube.dart';
 import 'package:school_sampleproj/global/constants.dart';
 import 'package:school_sampleproj/student_providers/gallery/gallery_providder.dart';
 import 'package:school_sampleproj/widget/Cards/gallery_item.dart';
-import 'package:school_sampleproj/widget/app_bar/app_bar.dart';
+import 'package:school_sampleproj/widget/app_bar/app_bar_student.dart';
 
 class Gallery extends StatefulWidget {
   static const classname = "/Gallery";
@@ -27,8 +27,9 @@ class _GalleryState extends State<Gallery> {
 
     return Scaffold(
       appBar: PreferredSize(
-          preferredSize: AppBarCommon.getSize(context),
-          child: AppBarCommon(
+          preferredSize: AppBarCommonStudent.getSize(context),
+          child: AppBarCommonStudent(
+            dashbordtext: "Gallery",
             title: "Mentors",
           )),
       body: Consumer<GalleryProvider>(

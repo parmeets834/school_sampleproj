@@ -12,7 +12,8 @@ import 'package:school_sampleproj/student_providers/mentor/mentor_provider.dart'
 import 'package:school_sampleproj/widget/Cards/add_card.dart';
 import 'package:school_sampleproj/widget/Cards/task_item.dart';
 import 'package:school_sampleproj/widget/Cards/teacher_request_card.dart';
-import 'package:school_sampleproj/widget/app_bar/app_bar.dart';
+import 'package:school_sampleproj/widget/app_bar/app_bar_student.dart';
+
 
 import 'mentor_request.dart';
 import 'mentor_response.dart';
@@ -32,9 +33,10 @@ class _MentorState extends State<Mentor> {
     Size screenSize = getScreenSize(context);
     return Scaffold(
       appBar: PreferredSize(
-          preferredSize: AppBarCommon.getSize(context),
-          child: AppBarCommon(
+          preferredSize: AppBarCommonStudent.getSize(context),
+          child: AppBarCommonStudent(
             title: "Mentors",
+            dashbordtext: "Mentors",
           )),
       body: Consumer<MentorProvider>(builder: (context, value, child) {
         return Stack(

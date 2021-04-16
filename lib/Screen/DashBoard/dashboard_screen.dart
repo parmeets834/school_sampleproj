@@ -55,7 +55,7 @@ class _StudentDashBoardState extends State<StudentDashBoard> with RouteAware {
     seturls();
     return Scaffold(
       appBar: AppBar(leading: Icon(Icons.list),
-        title: Text("Login to Cloud Campus"),
+        title: Text("Cloud Campus App"),
       ),
       body: Stack(children: [
         Container(

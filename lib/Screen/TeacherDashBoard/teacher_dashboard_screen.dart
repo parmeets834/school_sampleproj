@@ -54,13 +54,13 @@ class _TeachersDashBoardState extends State<TeachersDashBoard> with RouteAware {
     double screenWidth = MediaQuery.of(context).size.width;
      final provider=Provider.of<TeacherDashBoardProvider>(context);
      provider.context=context;
-/*    provider.carrage=ModalRoute.of(context).settings.arguments;
-    currunt_user=provider.carrage.userData;
-    setConfigurationAsPerUser(currunt_user);
-    seturls();*/
+    provider.carrage=ModalRoute.of(context).settings.arguments;
+    currunt_teacher=provider.carrage.teacherDetailModel;
+    setConfigurationAsPerTeacher(currunt_teacher);
+    seturls();
     return Scaffold(
       appBar: AppBar(leading: Icon(Icons.list),
-        title: Text("Login to Cloud Campus"),
+        title: Text("Cloud Campus App"),
       ),
       body: Stack(children: [
         Container(

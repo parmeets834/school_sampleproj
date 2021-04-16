@@ -44,7 +44,7 @@ class OtpProvider extends ChangeNotifier {
         toast(skey, "User Already Register");
       }
 
-      Provider.of<PreLoginProvider>(context,listen: false).state=appstate.reload;
+      Provider.of<PreLoginProvider>(context,listen: false).updateUserList();
       Timer(Duration(seconds: 1), () {
         Navigator.pushNamedAndRemoveUntil(context, PreLogin.classname, (route) => false);
       });

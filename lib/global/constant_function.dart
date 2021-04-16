@@ -5,6 +5,7 @@ import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:school_sampleproj/model.dart';
+import 'package:school_sampleproj/model/teacher_details_model.dart';
 import 'package:uuid/uuid.dart';
 
 import 'constants.dart';
@@ -43,9 +44,15 @@ checkButtonEnable() {
 
 // set User
 void setConfigurationAsPerUser( StudentDataModel userdata){
-  activeClientCode=userdata.activeClientCode;
+ // activeClientCode=userdata.activeClientCode;
 
 }
+
+void setConfigurationAsPerTeacher( TeacherDetailModel userdata){
+  // activeClientCode=userdata.activeClientCode;
+
+}
+
 
 void seturls() {
   if (activeClientCode == "SMPSD2003") {
@@ -131,7 +138,7 @@ String getUserActivityString(String LogInUserCode, String LogInUserName,
   return tmpstr;
 }
 
-toast(GlobalKey<ScaffoldState> key,String msg){
+toast(GlobalKey<ScaffoldState> key,String msg) {
   key.currentState.showSnackBar(SnackBar(content: Text(msg)));
 }
 

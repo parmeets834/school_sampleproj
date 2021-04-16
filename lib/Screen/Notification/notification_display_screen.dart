@@ -10,7 +10,7 @@ import 'package:school_sampleproj/student_providers/notification/notification_pr
 import 'package:school_sampleproj/widget/Cards/task_item.dart';
 import 'package:school_sampleproj/widget/Cards/task_item_shimmer.dart';
 import 'package:school_sampleproj/widget/ShimmerContainer.dart';
-import 'package:school_sampleproj/widget/app_bar/app_bar.dart';
+import 'package:school_sampleproj/widget/app_bar/app_bar_student.dart';
 import 'package:shimmer/shimmer.dart';
 
 class NotificationScreen extends StatefulWidget {
@@ -30,8 +30,8 @@ class _NotificationScreenState extends State<NotificationScreen> {
     provider.loadData();
     return Scaffold(
       appBar: PreferredSize(
-          preferredSize: AppBarCommon.getSize(context),
-          child: AppBarCommon(title: "Notifications")),
+          preferredSize: AppBarCommonStudent.getSize(context),
+          child: AppBarCommonStudent(title: "Notifications")),
       body: Consumer<NotificationProvider>(builder: (context, value, child) {
         // ignore: missing_return
         if (provider.state == appstate.loading) {

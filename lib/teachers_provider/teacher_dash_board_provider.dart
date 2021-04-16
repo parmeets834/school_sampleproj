@@ -3,7 +3,8 @@ import 'package:school_sampleproj/Screen/Gallery/gallery_screen.dart';
 import 'package:school_sampleproj/Screen/MediaViewers/image_cropper.dart';
 import 'package:school_sampleproj/Screen/Mentor/mentor.dart';
 import 'package:school_sampleproj/Screen/MyMentors/my_mentor_list.dart';
-import 'package:school_sampleproj/Screen/Notification/notification_screen.dart';
+import 'package:school_sampleproj/Screen/Notification/notification_display_screen.dart';
+import 'package:school_sampleproj/Screen/Notification/notification_upload_screen.dart';
 import 'package:school_sampleproj/Screen/Task/Task.dart';
 import 'package:school_sampleproj/Screen/TimeTable/time_table.dart';
 import 'package:school_sampleproj/Screen/profile/profile.dart';
@@ -45,7 +46,7 @@ class TeacherDashBoardProvider extends ChangeNotifier {
   loadRoute(int index) {
     switch (index) {
       case 0:
-        Navigator.pushNamed(context, NotificationScreen.classname,
+        Navigator.pushNamed(context, NotificationUpload.classname,
             arguments: carrage);
         break;
       case 1:

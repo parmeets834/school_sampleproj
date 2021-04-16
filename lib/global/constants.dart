@@ -29,6 +29,7 @@ const color_dark_theme=Color(0xFF1f9ef1);
  StudentDataModel currunt_user;
  StudentDataModel otp_user;
  TeacherDetailModel otp_teacher;
+ TeacherDetailModel currunt_teacher;
 
 
 //-----------------------------------outside parameter given by client----------------------------------------------------------------

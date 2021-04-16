@@ -86,15 +86,24 @@ insertStudentData(StudentDataModel userData)async{
 
   }
 
-
-
-
 getLoggedUser()async{
   await _openDb();
   List<dynamic> d= await database.rawQuery('SELECT * FROM "'+userTable+'"');
 return d;
-
 }
+
+
+  deleteUserData()async{
+    await _openDb();
+    await database.transaction((txn) async {
+    await txn.rawDelete("DELETE FROM ${userTable}");
+    return true;
+      //    print('inserted2: $id2');
+    });
+
+  }
+
+
 
 
 

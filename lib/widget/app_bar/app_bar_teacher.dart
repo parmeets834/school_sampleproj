@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:school_sampleproj/global/constants.dart';
 import 'package:school_sampleproj/model.dart';
 
-class AppBarCommon extends PreferredSize {
+class AppBarCommonTeacher extends PreferredSize {
   String title;
 
 
-  AppBarCommon({this.title="Title Undefined"});
+  AppBarCommonTeacher({this.title="Title Undefined"});
 
   @override
   Widget build(BuildContext context) {
@@ -38,9 +38,9 @@ class AppBarCommon extends PreferredSize {
                   children: [
 
                     Text("St Marry Public School",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 14),),
-                    Text("Student: ${currunt_user.activeUserName}",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 14),),
-                    Text("Class : ${currunt_user.activeUserClass}",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 14),),
-                    Text("DashBoard: Parent",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 14),),
+                    Text("Teacher: ${currunt_teacher.activeUserName??=""}",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 14),),
+                 /*   Text("Class : ${currunt_user.activeUserClass}",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 14),),
+                 */   Text("DashBoard: Teacher",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 14),),
 
                   ],),
               ),
