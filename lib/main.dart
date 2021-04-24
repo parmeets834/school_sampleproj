@@ -26,7 +26,6 @@ import 'Screen/MyMentors/my_mentor_list.dart';
 import 'Screen/Notification/notification_display_screen.dart';
 import 'Screen/TimeTable/time_table.dart';
 import 'Screen/profile/profile.dart';
-import 'file:///D:/Practice%20folder/school_sampleproj/lib/student_providers/video_player.dart';
 import 'package:school_sampleproj/student_providers/dash_board_provider.dart';
 import 'package:school_sampleproj/student_providers/mentor/mentor_list_provider.dart';
 import 'package:school_sampleproj/student_providers/mentor/mentor_provider.dart';
@@ -127,8 +126,6 @@ class MyApp extends StatelessWidget {
         Profile.classname:(context)=>Profile(),
         HomeWorkScreen.classname:(context)=>HomeWorkScreen(),
         TeachersDashBoard.classname:(context)=>TeachersDashBoard()
-
-
       },
     );
   }
