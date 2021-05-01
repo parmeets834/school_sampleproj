@@ -12,10 +12,6 @@ import 'package:school_sampleproj/widget/Cards/teacher_card.dart';
 import 'package:school_sampleproj/widget/Cards/teacher_request_card.dart';
 import 'package:school_sampleproj/widget/app_bar/app_bar_student.dart';
 
-
-
-
-
 class MyMentorList extends StatefulWidget {
   static const classname="/MyMentorList";
   @override

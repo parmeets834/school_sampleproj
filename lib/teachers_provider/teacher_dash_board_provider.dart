@@ -6,6 +6,7 @@ import 'package:school_sampleproj/Screen/MyMentors/my_mentor_list.dart';
 import 'package:school_sampleproj/Screen/Notification/notification_display_screen.dart';
 import 'package:school_sampleproj/Screen/Notification/notification_upload_screen.dart';
 import 'package:school_sampleproj/Screen/Task/Task.dart';
+import 'package:school_sampleproj/Screen/Task/task_teacher_subject_screen.dart';
 import 'package:school_sampleproj/Screen/TimeTable/time_table.dart';
 import 'package:school_sampleproj/Screen/profile/profile.dart';
 import 'package:school_sampleproj/model/Carrage.dart';
@@ -49,10 +50,10 @@ class TeacherDashBoardProvider extends ChangeNotifier {
         Navigator.pushNamed(context, NotificationUpload.classname,
             arguments: carrage);
         break;
-      case 1:
-        Navigator.pushNamed(context, Task.classname);
+    case 1:
+        Navigator.pushNamed(context, TeacherTaskSubjectList.classname);
         break;
-      case 2:
+   /*   case 2:
         Navigator.pushNamed(context, Gallery.classname);
         break;
       case 3:
@@ -62,9 +63,9 @@ class TeacherDashBoardProvider extends ChangeNotifier {
         Navigator.pushNamed(context, StudentTimeTablePage.classname);
         break;
 
-      /*  case 6:
+      *//*  case 6:
         Navigator.pushNamed(context, ImageCropperScreen.classname);
-        break;*/
+        break;*//*
       case 6:
         Navigator.pushNamed(context, Profile.classname);
         break;
@@ -76,7 +77,7 @@ class TeacherDashBoardProvider extends ChangeNotifier {
         break;
       case 12:
         _launchTeams();
-        break;
+        break;*/
     }
   }
 

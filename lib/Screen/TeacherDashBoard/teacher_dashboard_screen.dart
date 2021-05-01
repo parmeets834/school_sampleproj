@@ -94,8 +94,8 @@ class _TeachersDashBoardState extends State<TeachersDashBoard> with RouteAware {
                           children: [
 
                             Text("St Marry Public School",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 14),),
-                            Text("Student: SDSDS",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 14),),
-                            Text("Class : X11",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 14),),
+                            Text("Teacher name: ${currunt_teacher.activeUserName}",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 14),),
+                            Text("Class : ${currunt_teacher.activeUserClass}",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 14),),
                             Text("DashBoard: Teacher",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 14),),
 
                           ],),

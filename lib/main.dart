@@ -9,6 +9,7 @@ import 'package:school_sampleproj/Screen/MediaViewers/pdf_view.dart';
 import 'package:school_sampleproj/Screen/MediaViewers/youtube.dart';
 import 'package:school_sampleproj/Screen/Notification/notification_upload_screen.dart';
 import 'package:school_sampleproj/Screen/PreLogin/pre_login.dart';
+import 'package:school_sampleproj/Screen/Task/task_teacher_subject_screen.dart';
 import 'package:school_sampleproj/Screen/TeacherDashBoard/teacher_dashboard_screen.dart';
 import 'package:school_sampleproj/model.dart';
 import 'package:school_sampleproj/student_providers/gallery/gallery_providder.dart';
@@ -18,6 +19,7 @@ import 'package:school_sampleproj/student_providers/mentor/mentor_request.dart';
 import 'package:school_sampleproj/student_providers/profile/profile_provider.dart';
 import 'package:school_sampleproj/student_providers/task/task_provider.dart';
 import 'package:school_sampleproj/teachers_provider/notification_upload.dart';
+import 'package:school_sampleproj/teachers_provider/task/teacher_list.dart';
 import 'Screen/Gallery/gallery_screen.dart';
 import 'Screen/HomeWorkDisplayScreen/home_work_screen.dart';
 import 'Screen/MediaViewers/image_cropper.dart';
@@ -80,7 +82,8 @@ void main() async{
         ChangeNotifierProvider(create: (ctx) => ProfileProvider()),
         /* Teachers providers*/
         ChangeNotifierProvider(create: (ctx) => TeacherDashBoardProvider()),
-        ChangeNotifierProvider(create:(ctx)=>NotificationUploadProvider())
+        ChangeNotifierProvider(create:(ctx)=>NotificationUploadProvider()),
+        ChangeNotifierProvider(create:(ctx)=>TaskTeacherSubjectProvider())
 
       ],
       child: MyApp(),
@@ -125,7 +128,9 @@ class MyApp extends StatelessWidget {
         ImageCropperScreen.classname:(context)=>ImageCropperScreen(),
         Profile.classname:(context)=>Profile(),
         HomeWorkScreen.classname:(context)=>HomeWorkScreen(),
-        TeachersDashBoard.classname:(context)=>TeachersDashBoard()
+        /*Teacher routes */
+        TeachersDashBoard.classname:(context)=>TeachersDashBoard(),
+        TeacherTaskSubjectList.classname:(context)=>TeacherTaskSubjectList()
       },
     );
   }
