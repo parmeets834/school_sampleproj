@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:school_sampleproj/widget/Cards/teacher_card.dart';
 import 'package:school_sampleproj/widget/app_bar/app_bar_teacher.dart';
 
 class TeacherTaskSubjectList extends StatefulWidget {
@@ -18,9 +19,11 @@ class _TeacherTaskSubjectState extends State<TeacherTaskSubjectList> {
             title: "Teacher List",
           )),
       body: ListView.builder(itemBuilder: (index, context) {
+                 return TeacherCard(imageurl : "",color: Colors.red,subject: "abc",);
 
-
-      }),
+      },
+      itemCount: 10,
+      ),
     );
   }
 }

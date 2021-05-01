@@ -84,7 +84,6 @@ void main() async{
         ChangeNotifierProvider(create: (ctx) => TeacherDashBoardProvider()),
         ChangeNotifierProvider(create:(ctx)=>NotificationUploadProvider()),
         ChangeNotifierProvider(create:(ctx)=>TaskTeacherSubjectProvider())
-
       ],
       child: MyApp(),
     ));
